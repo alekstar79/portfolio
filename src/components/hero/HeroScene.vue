@@ -176,7 +176,6 @@ const { sliderRoot } = useHeroSlider()
   }
 }
 
-// Laptop panels and UML elements positioning
 .code-signs > *,
 .laptop-bottom-panel > *,
 .laptop-top-panel > *,
@@ -184,50 +183,109 @@ const { sliderRoot } = useHeroSlider()
   position: absolute;
 }
 
-// Laptop top panel
 .laptop-top-panel {
   pointer-events: none;
-  overflow: hidden;
+}
+
+.laptop-bottom-panel__shadow,
+.laptop-bottom-panel__base,
+.laptop-top-panel__base {
+  border-radius: var(--borderRadius);
+}
+
+.laptop-bottom-panel__shadow,
+.laptop-bottom-panel__base,
+.laptop-bottom-panel__keyboard {
+  will-change: transform;
+
+  .scroll-effect & {
+    backface-visibility: hidden;
+    opacity: 0;
+    transform: rotate(35deg) skew(-25deg, -5deg) translate3d(-100px, -100px, 0);
+    transition-property: opacity, transform;
+    transition-timing-function: ease;
+    visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+
+  .dom-is-ready .scroll-effect & {
+    transition-duration: 1s, 0.8s;
+  }
+
+  .scroll-effect--visible & {
+    opacity: 1;
+    transform: rotate(35deg) skew(-25deg, -5deg);
+    transition-delay: var(--delay);
+    visibility: visible;
+  }
+}
+
+.laptop-top-panel__base,
+.laptop-top-panel__screen {
+  will-change: transform;
+
+  .scroll-effect & {
+    backface-visibility: hidden;
+    opacity: 0;
+    transform: rotate(35deg) skew(35deg, -5deg) translate3d(-100px, 100px, 0);
+    transition-property: opacity, transform;
+    transition-timing-function: ease;
+    visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+
+  .dom-is-ready .scroll-effect & {
+    transition-duration: 1.4s, 0.8s;
+  }
+
+  .scroll-effect--visible & {
+    opacity: 1;
+    transform: rotate(35deg) skew(35deg, -5deg);
+    transition-delay: var(--delay);
+    visibility: visible;
+  }
 }
 
 .laptop-top-panel__base {
-  border-radius: var(--borderRadius);
-  will-change: transform;
+  background: linear-gradient(131.36deg, #311b61 20740.6%, #290f52 24472.38%, #200041 29883.45%, #0f001f 39399.47%);
+  border: 4px solid #200041;
+  border-bottom: none;
+  border-left: none;
+  height: 30.5%;
+  left: 36.1%;
+  top: 25.4%;
+  width: 49.4%;
 }
 
 .laptop-top-panel__screen {
-  will-change: transform;
+  background: linear-gradient(335.1deg, #2a0c5c 3.62%, #5f27bd 68.17%, #b4299a 97.16%);
+  border: 2px solid #4b1487;
+  border-radius: calc(var(--borderRadius) * 0.75);
+  height: 27.3%;
+  left: 37.9%;
+  top: 27%;
+  width: 45.3%;
+
+  @media (max-width: 767px) {
+    height: 27.8%;
+    left: 37.1%;
+    width: 46%;
+  }
 }
 
+.laptop-bottom-panel__shine,
 .laptop-top-panel__shine {
-  height: 31%;
-  left: 25%;
-  top: 0;
-  width: 32%;
-  will-change: transform;
-  background: radial-gradient(
-    50% 50% at 50% 50%,
-    #dc3daa 0,
-    #bb3491 5%,
-    #8f286f 13%,
-    #691d51 21%,
-    #481438 30%,
-    #2e0d23 40%,
-    #190714 50%,
-    #0b0308 62%,
-    #030102 77%,
-    #000 100%
-  );
   background-blend-mode: color-dodge;
   mix-blend-mode: color-dodge;
+  will-change: transform;
 
   .scroll-effect & {
+    backface-visibility: hidden;
     opacity: 0;
-    visibility: hidden;
     transform: scale(0);
     transition-property: opacity, transform;
     transition-timing-function: var(--transition-timing-function);
-    backface-visibility: hidden;
+    visibility: hidden;
     -webkit-backface-visibility: hidden;
   }
 
@@ -241,20 +299,47 @@ const { sliderRoot } = useHeroSlider()
     transition-delay: var(--delay);
     visibility: visible;
   }
+}
 
-  @for $i from 1 through 20 {
-    .scroll-effect--visible &:nth-child(#{$i}) {
-      --delay: #{($i - 1) * 0.25}s;
-    }
+.laptop-top-panel__shine {
+  background: radial-gradient(
+    50% 50% at 50% 50%,
+    rgba(220, 61, 170, 0.9) 0,
+    rgba(187, 52, 145, 0.72) 5%,
+    rgba(143, 40, 111, 0.54) 13%,
+    rgba(105, 29, 81, 0.38) 21%,
+    rgba(72, 20, 56, 0.24) 30%,
+    rgba(46, 13, 35, 0.14) 40%,
+    rgba(25, 7, 20, 0.08) 50%,
+    rgba(11, 3, 8, 0.04) 62%,
+    transparent 77%
+  );
+  clip-path: polygon(36% 0, 100% 42%, 72% 100%, 0 58%);
+  height: 31%;
+  left: 25%;
+  top: 0;
+  width: 32%;
+}
+
+.laptop-bottom-panel {
+  > * {
+    will-change: transform;
   }
 }
 
-// Laptop bottom panel
-.laptop-bottom-panel {
-  overflow: hidden;
+.laptop-bottom-panel__shadow,
+.laptop-bottom-panel__base {
+  height: 29.5%;
+  left: 20.5%;
+  width: 51.8%;
+}
 
-  > * {
-    will-change: transform;
+.laptop-bottom-panel__shadow {
+  background: #b592d9;
+  top: 55.9%;
+
+  @media (max-width: 767px) {
+    top: 55%;
   }
 }
 
@@ -265,6 +350,10 @@ const { sliderRoot } = useHeroSlider()
   border: calc(var(--shadowSize) / 2) solid #2c1458;
   box-shadow: var(--shadowSize) var(--shadowSize) 0 0 #10054d;
   top: 52.3%;
+
+  @media (max-width: 767px) {
+    --shadowSize: 5px;
+  }
 }
 
 .laptop-bottom-panel__keyboard {
@@ -279,6 +368,11 @@ const { sliderRoot } = useHeroSlider()
   padding: 1.5%;
   top: 57.3%;
   width: 39.1%;
+
+  @media (max-width: 767px) {
+    border-radius: 4px;
+    gap: 2px;
+  }
 }
 
 .laptop-bottom-panel__key {
@@ -290,8 +384,45 @@ const { sliderRoot } = useHeroSlider()
   box-shadow: var(--shadowSize) var(--shadowSize) 0 0 #8a58a5;
   cursor: pointer;
   grid-column: span var(--columns);
+  will-change: transform;
 
-  // Key size modifiers
+  .scroll-effect & {
+    backface-visibility: hidden;
+    opacity: 0;
+    transform: translate3d(-100px, -100px, 0);
+    transition-property: opacity, transform;
+    transition-timing-function: ease;
+    visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+
+  .dom-is-ready .scroll-effect & {
+    transition-duration: 1s, 0.8s;
+  }
+
+  .scroll-effect--visible & {
+    opacity: 1;
+    transform: none;
+    transition-delay: var(--delay);
+    visibility: visible;
+  }
+
+  @media (max-width: 767px) {
+    --shadowSize: 1px;
+
+    border-radius: 2px;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      background-color: #d8c2e3;
+    }
+  }
+
+  &:active {
+    box-shadow: var(--shadowSize) var(--shadowSize) 2px 2px #8a58a5;
+  }
+
   &--3 {
     --columns: 3;
   }
@@ -310,54 +441,23 @@ const { sliderRoot } = useHeroSlider()
 }
 
 .laptop-bottom-panel__shine {
+  background: radial-gradient(
+    50% 49.71% at 50.04% 58.03%,
+    rgba(151, 42, 116, 0.9) 0,
+    rgba(138, 38, 106, 0.72) 4%,
+    rgba(96, 27, 74, 0.5) 19%,
+    rgba(61, 17, 47, 0.32) 35%,
+    rgba(35, 10, 27, 0.18) 51%,
+    rgba(15, 4, 12, 0.08) 67%,
+    transparent 83%
+  );
+  clip-path: polygon(0 28%, 74% 0, 100% 70%, 28% 100%);
   height: 18%;
   left: 48%;
   top: 79%;
   width: 16%;
-  will-change: transform;
-  background: radial-gradient(
-    50% 49.71% at 50.04% 58.03%,
-    #972a74 0,
-    #8a266a 4%,
-    #601b4a 19%,
-    #3d112f 35%,
-    #230a1b 51%,
-    #0f040c 67%,
-    #040103 83%,
-    #000 100%
-  );
-  background-blend-mode: color-dodge;
-  mix-blend-mode: color-dodge;
-
-  .scroll-effect & {
-    opacity: 0;
-    visibility: hidden;
-    transform: scale(0);
-    transition-property: opacity, transform;
-    transition-timing-function: var(--transition-timing-function);
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-  }
-
-  .dom-is-ready .scroll-effect & {
-    transition-duration: 2s, 0.6s;
-  }
-
-  .scroll-effect--visible & {
-    opacity: 1;
-    transform: none;
-    transition-delay: var(--delay);
-    visibility: visible;
-  }
-
-  @for $i from 1 through 20 {
-    .scroll-effect--visible &:nth-child(#{$i}) {
-      --delay: #{($i - 1) * 0.25}s;
-    }
-  }
 }
 
-// UML Diagram
 .uml-diagram {
   height: 100%;
   left: 0;
@@ -368,7 +468,7 @@ const { sliderRoot } = useHeroSlider()
   transform-origin: 50% 25%;
   will-change: transform;
 
-  // OPTIMIZE: Convert 70 nth-child delay rules to CSS variable instead of repeating
+  // OPTIMIZE: общий блок reveal оставлен локально, чтобы не держать legacy-scene в глобальных стилях.
   .scroll-effect & {
     opacity: 0;
     visibility: hidden;
@@ -414,7 +514,153 @@ const { sliderRoot } = useHeroSlider()
   }
 }
 
-// Code Signs
+.uml-diagram__ellipse,
+.uml-diagram__rectangle,
+.uml-diagram__rhombus {
+  background: rgba(242, 167, 140, 0.8);
+}
+
+.uml-diagram__ellipse {
+  border-radius: 25px;
+  height: 3.2%;
+  width: 13.2%;
+
+  &--top {
+    left: 46.6%;
+    top: 14.9%;
+  }
+
+  &--bottom {
+    left: 46%;
+    top: 42.5%;
+  }
+}
+
+.uml-diagram__rectangle {
+  height: 4.6%;
+  width: 12.4%;
+
+  &--left {
+    left: 37.2%;
+    top: 25.9%;
+  }
+
+  &--right {
+    left: 55.7%;
+    top: 36.6%;
+  }
+}
+
+.uml-diagram__rhombus {
+  align-items: center;
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  color: rgba(255, 255, 255, 0.8);
+  display: flex;
+  font-size: 1.625em;
+  font-weight: 400;
+  height: 7.3%;
+  justify-content: center;
+  left: 46.8%;
+  top: 22.7%;
+  width: 12.4%;
+}
+
+.uml-diagram__direction-arrow,
+.uml-diagram__direction-line {
+  background-color: #b086cc;
+}
+
+.uml-diagram__direction-arrow {
+  width: 0.3%;
+
+  &::after {
+    background-color: inherit;
+    clip-path: polygon(100% 0, 0 0, 50% 100%);
+    content: "";
+    height: 7px;
+    left: 50%;
+    position: absolute;
+    top: 100%;
+    transform: translateX(-50%);
+    width: 9px;
+
+    @media (max-width: 767px) {
+      height: 4px;
+      width: 6px;
+    }
+  }
+
+  &--top {
+    height: 1.3%;
+    left: 52.9%;
+    top: 18.8%;
+  }
+
+  &--left,
+  &--right {
+    height: 2.4%;
+  }
+
+  &--left {
+    left: 43.8%;
+    top: 21.3%;
+  }
+
+  &--right {
+    left: 62.2%;
+    top: 31.9%;
+  }
+
+  &--bottom {
+    height: 1.7%;
+    left: 52.8%;
+    top: 39.1%;
+  }
+}
+
+.uml-diagram__direction-line {
+  &--top-left,
+  &--top-right,
+  &--bottom {
+    height: 0.3%;
+  }
+
+  &--top-left {
+    left: 43.7%;
+    top: 22%;
+    width: 4%;
+  }
+
+  &--top-right {
+    left: 58.1%;
+    top: 30.5%;
+    width: 4.6%;
+  }
+
+  &--bottom-left,
+  &--bottom-right {
+    height: 1.8%;
+    width: 0.3%;
+  }
+
+  &--bottom-left {
+    left: 43.1%;
+    top: 31.3%;
+  }
+
+  &--bottom-right {
+    left: 61.5%;
+    top: 41.9%;
+  }
+
+  &--bottom {
+    height: 0.3%;
+    left: 41.9%;
+    top: 38.25%;
+    width: 21%;
+  }
+}
+
 .code-signs {
   pointer-events: none;
 
@@ -447,9 +693,138 @@ const { sliderRoot } = useHeroSlider()
   padding: 0.5% 1%;
   pointer-events: none;
   transform: rotate(35deg) skew(35deg, -5deg);
+
+  .is-light-theme-enabled & {
+    filter: opacity(0.4);
+    mix-blend-mode: initial;
+  }
+
+  &::after {
+    background-blend-mode: screen;
+    content: "";
+    height: 100%;
+    mix-blend-mode: screen;
+    opacity: 0.8;
+    position: absolute;
+    top: 0;
+    width: 200%;
+    z-index: -1;
+  }
+
+  .i-icon {
+    --color: inherit;
+  }
+
+  &--left::after {
+    animation: move-to-left 5s linear infinite;
+    background: linear-gradient(-90deg, #45108a, rgba(69, 16, 138, 0));
+    right: 0;
+  }
+
+  &--right::after {
+    animation: move-to-right 5s linear infinite;
+    background: linear-gradient(90deg, #45108a, rgba(69, 16, 138, 0));
+    left: 0;
+  }
+
+  &--tag {
+    left: 30%;
+    opacity: 0.6;
+    top: 10.7%;
+  }
+
+  &--react {
+    color: #9f19ab;
+    left: 64.7%;
+    top: 20.1%;
+  }
+
+  &--ts {
+    left: 8%;
+    top: 38%;
+  }
+
+  &--postcss {
+    left: 88%;
+    top: 55%;
+  }
+
+  &--js {
+    left: 82%;
+    top: 73.5%;
+  }
+
+  &--stars {
+    left: 23%;
+    top: 17.5%;
+
+    &::after {
+      display: none;
+    }
+  }
+
+  &--triangles {
+    display: inline-flex;
+    font-size: 1.375em;
+    gap: 4px;
+    left: 9.1%;
+    padding-inline: 1em;
+    top: 23.1%;
+
+    &::before {
+      content: "{ ";
+    }
+
+    &::after {
+      all: unset;
+      content: "}";
+    }
+
+    &::before,
+    &::after {
+      font-size: 1.3em;
+    }
+  }
+
+  &--gear {
+    font-size: 1.25em;
+    left: 18.6%;
+    top: 35.1%;
+  }
+
+  &--search {
+    font-size: 1.125em;
+    left: 16%;
+    top: 49%;
+  }
+
+  &--idea {
+    left: 88%;
+    top: 34%;
+  }
+
+  &--shield {
+    left: 83.6%;
+    top: 41.3%;
+  }
 }
 
-// Code Panel
+.code-signs__triangle {
+  --height: 20px;
+  --width: 15px;
+
+  border-color: transparent transparent transparent currentColor;
+  border-style: solid;
+  border-width: calc(var(--height) / 2) 0 calc(var(--height) / 2) var(--width);
+  height: 0;
+  width: 0;
+
+  @media (max-width: 767px) {
+    --height: 12px;
+    --width: 8px;
+  }
+}
+
 .code-panel {
   --wordDefaultWidth: 5px;
   --delay: 0s;
@@ -508,7 +883,7 @@ const { sliderRoot } = useHeroSlider()
     visibility: visible;
   }
 
-  // OPTIMIZE: Generate nth-child delay rules for code panel
+  // OPTIMIZE: задержка оставлена через генерацию SCSS вместо ручного списка legacy-селекторов.
   @for $i from 1 through 70 {
     .scroll-effect--visible &:nth-child(#{$i}) {
       --delay: #{($i - 1) * 0.25}s;
@@ -527,6 +902,27 @@ const { sliderRoot } = useHeroSlider()
   transform-origin: 0 50%;
   will-change: transform;
 
+  .scroll-effect & {
+    backface-visibility: hidden;
+    opacity: 0;
+    transform: translate3d(100px, 0, 0);
+    transition-property: opacity, transform;
+    transition-timing-function: ease;
+    visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+
+  .dom-is-ready .scroll-effect & {
+    transition-duration: 0s, 0.5s;
+  }
+
+  .scroll-effect--visible & {
+    opacity: 1;
+    transform: none;
+    transition-delay: var(--delay);
+    visibility: visible;
+  }
+
   &--2 {
     --columns: 2;
   }
@@ -540,19 +936,24 @@ const { sliderRoot } = useHeroSlider()
   }
 
   &--yellow-color {
-    background: linear-gradient(90deg, #ffd700 34880%, #ffed4e 35227%);
+    background: rgba(242, 208, 140, 0.7);
+    mix-blend-mode: initial;
+
+    &:first-child {
+      background: #f2a78c;
+      opacity: 0.9;
+    }
   }
 
   &--bright-color {
-    background: linear-gradient(90deg, #fff9d8 34880%, #fffaeb 35227%);
+    background: rgba(159, 25, 171, 0.5);
   }
 
   &--transparent-color {
-    background: linear-gradient(90deg, rgba(255, 217, 0, 0.5) 34880%, rgba(255, 237, 78, 0.5) 35227%);
+    background: transparent;
   }
 }
 
-// Byte Code
 .byte-code {
   --delay: 0s;
 
@@ -602,10 +1003,28 @@ const { sliderRoot } = useHeroSlider()
 }
 
 .byte-code__char {
-  // Character styling
+  .scroll-effect & {
+    backface-visibility: hidden;
+    opacity: 0;
+    transform: translate3d(100px, 0, 0);
+    transition-property: opacity, transform;
+    transition-timing-function: ease;
+    visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+
+  .dom-is-ready .scroll-effect & {
+    transition-duration: 0s, 0.5s;
+  }
+
+  .scroll-effect--visible & {
+    opacity: 1;
+    transform: none;
+    transition-delay: var(--delay);
+    visibility: visible;
+  }
 }
 
-// Hero Slider
 .hero-slider {
   --slideSize: 32px;
   --marginX: 8px;
