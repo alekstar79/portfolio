@@ -26,7 +26,7 @@ import SkillCard from '@/components/ui/SkillCard.vue'
 import { hardSkills, softSkills } from '@/utils/content'
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .skills__inner {
   column-gap: 80px;
 }

@@ -31,7 +31,7 @@ const rootClasses = computed(() => {
 })
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 @media (min-width: 768px) {
   .soc1als__list {
     justify-content: flex-end;
@@ -64,6 +64,10 @@ const rootClasses = computed(() => {
   height: var(--size);
   border-radius: 50%;
   box-shadow: var(--box-shadow-inset-2);
+}
+
+.soc1als__link::after {
+  content: none;
 }
 
 .dom-is-ready .soc1als__link {

@@ -27,7 +27,7 @@ import WorkExperienceCard from '@/components/ui/WorkExperienceCard.vue'
 import { workExperienceItems } from '@/utils/content'
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .work-experience {
   --circleSize: 40px;
   padding-left: calc(var(--circleSize) * 2);
@@ -92,6 +92,7 @@ import { workExperienceItems } from '@/utils/content'
   border: var(--borderWidth) solid var(--c-dark);
   border-radius: 50%;
   box-shadow: var(--box-shadow-3);
+  box-sizing: content-box;
   transform: translateY(-50%);
 }
 

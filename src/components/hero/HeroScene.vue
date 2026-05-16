@@ -276,13 +276,24 @@ const { sliderRoot } = useHeroSlider()
 .laptop-bottom-panel__shine,
 .laptop-top-panel__shine {
   background-blend-mode: color-dodge;
+  border-radius: calc(var(--borderRadius) * 0.75);
+  overflow: hidden;
   mix-blend-mode: color-dodge;
+  transform: var(--shineTransform);
   will-change: transform;
+
+  &::before {
+    content: "";
+    height: 100%;
+    inset: 0;
+    position: absolute;
+    width: 100%;
+  }
 
   .scroll-effect & {
     backface-visibility: hidden;
     opacity: 0;
-    transform: scale(0);
+    transform: var(--shineTransform) scale(0);
     transition-property: opacity, transform;
     transition-timing-function: var(--transition-timing-function);
     visibility: hidden;
@@ -295,30 +306,40 @@ const { sliderRoot } = useHeroSlider()
 
   .scroll-effect--visible & {
     opacity: 1;
-    transform: none;
+    transform: var(--shineTransform);
     transition-delay: var(--delay);
     visibility: visible;
   }
 }
 
 .laptop-top-panel__shine {
-  background: radial-gradient(
-    50% 50% at 50% 50%,
-    rgba(220, 61, 170, 0.9) 0,
-    rgba(187, 52, 145, 0.72) 5%,
-    rgba(143, 40, 111, 0.54) 13%,
-    rgba(105, 29, 81, 0.38) 21%,
-    rgba(72, 20, 56, 0.24) 30%,
-    rgba(46, 13, 35, 0.14) 40%,
-    rgba(25, 7, 20, 0.08) 50%,
-    rgba(11, 3, 8, 0.04) 62%,
-    transparent 77%
-  );
-  clip-path: polygon(36% 0, 100% 42%, 72% 100%, 0 58%);
-  height: 31%;
-  left: 25%;
-  top: 0;
-  width: 32%;
+  --shineTransform: rotate(35deg) skew(35deg, -5deg);
+
+  height: 27.3%;
+  left: 37.9%;
+  top: 27%;
+  width: 45.3%;
+
+  &::before {
+    background: radial-gradient(
+      50% 50% at 0% 0%,
+      rgba(220, 61, 170, 0.95) 0,
+      rgba(187, 52, 145, 0.75) 5%,
+      rgba(143, 40, 111, 0.56) 13%,
+      rgba(105, 29, 81, 0.4) 21%,
+      rgba(72, 20, 56, 0.25) 30%,
+      rgba(46, 13, 35, 0.14) 40%,
+      rgba(25, 7, 20, 0.08) 50%,
+      rgba(11, 3, 8, 0.04) 62%,
+      transparent 77%
+    );
+  }
+
+  @media (max-width: 767px) {
+    height: 27.8%;
+    left: 37.1%;
+    width: 46%;
+  }
 }
 
 .laptop-bottom-panel {
@@ -441,21 +462,26 @@ const { sliderRoot } = useHeroSlider()
 }
 
 .laptop-bottom-panel__shine {
-  background: radial-gradient(
-    50% 49.71% at 50.04% 58.03%,
-    rgba(151, 42, 116, 0.9) 0,
-    rgba(138, 38, 106, 0.72) 4%,
-    rgba(96, 27, 74, 0.5) 19%,
-    rgba(61, 17, 47, 0.32) 35%,
-    rgba(35, 10, 27, 0.18) 51%,
-    rgba(15, 4, 12, 0.08) 67%,
-    transparent 83%
-  );
-  clip-path: polygon(0 28%, 74% 0, 100% 70%, 28% 100%);
-  height: 18%;
-  left: 48%;
-  top: 79%;
-  width: 16%;
+  --shineTransform: rotate(35deg) skew(-25deg, -5deg);
+
+  border-radius: var(--borderRadius);
+  height: 29.5%;
+  left: 20.5%;
+  top: 52.3%;
+  width: 51.8%;
+
+  &::before {
+    background: radial-gradient(
+      50% 49.71% at 76% 100%,
+      rgba(151, 42, 116, 0.95) 0,
+      rgba(138, 38, 106, 0.74) 4%,
+      rgba(96, 27, 74, 0.52) 19%,
+      rgba(61, 17, 47, 0.34) 35%,
+      rgba(35, 10, 27, 0.18) 51%,
+      rgba(15, 4, 12, 0.08) 67%,
+      transparent 83%
+    );
+  }
 }
 
 .uml-diagram {
@@ -468,7 +494,6 @@ const { sliderRoot } = useHeroSlider()
   transform-origin: 50% 25%;
   will-change: transform;
 
-  // OPTIMIZE: общий блок reveal оставлен локально, чтобы не держать legacy-scene в глобальных стилях.
   .scroll-effect & {
     opacity: 0;
     visibility: hidden;
@@ -883,7 +908,6 @@ const { sliderRoot } = useHeroSlider()
     visibility: visible;
   }
 
-  // OPTIMIZE: задержка оставлена через генерацию SCSS вместо ручного списка legacy-селекторов.
   @for $i from 1 through 70 {
     .scroll-effect--visible &:nth-child(#{$i}) {
       --delay: #{($i - 1) * 0.25}s;
@@ -994,7 +1018,7 @@ const { sliderRoot } = useHeroSlider()
     visibility: visible;
   }
 
-  // OPTIMIZE: Generate nth-child delay rules for byte code
+  // Generate nth-child delay rules for byte code
   @for $i from 1 through 70 {
     .scroll-effect--visible &:nth-child(#{$i}) {
       --delay: #{($i - 1) * 0.25}s;
@@ -1081,7 +1105,7 @@ const { sliderRoot } = useHeroSlider()
     visibility: visible;
   }
 
-  // OPTIMIZE: Generate nth-child delay rules for hero slider
+  // Generate nth-child delay rules for hero slider
   @for $i from 1 through 70 {
     .scroll-effect--visible &:nth-child(#{$i}) {
       --delay: #{($i - 1) * 0.25}s;

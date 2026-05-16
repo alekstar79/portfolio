@@ -26,7 +26,7 @@ import { portfolioItems } from '@/utils/content'
 const { openPortfolioItem } = useGallery()
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .scroll-effect .portfolio__item {
   opacity: 0;
   visibility: hidden;

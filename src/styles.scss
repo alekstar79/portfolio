@@ -81,8 +81,8 @@
   font-style: normal;
   font-weight: 300;
   src:
-    url("/fonts/Rubik-Light.woff2") format("woff2"),
-    url("/fonts/Rubik-Light.woff") format("woff");
+    url(/fonts/Rubik-Light.woff2) format("woff2"),
+    url(/fonts/Rubik-Light.woff) format("woff");
 }
 
 @font-face {
@@ -91,8 +91,8 @@
   font-style: normal;
   font-weight: 400;
   src:
-    url("/fonts/Rubik-Regular.woff2") format("woff2"),
-    url("/fonts/Rubik-Regular.woff") format("woff");
+    url(/fonts/Rubik-Regular.woff2) format("woff2"),
+    url(/fonts/Rubik-Regular.woff) format("woff");
 }
 
 * {
@@ -232,8 +232,8 @@ a[href^="fax:"] {
   white-space: nowrap;
 }
 
-a[target="_blank"]::after {
-  background: url("/images/icons/link.svg") center / contain no-repeat;
+a[target="_blank"]:not(.soc1als__link)::after {
+  background: url(/images/icons/link.svg) center / contain no-repeat;
   content: "";
   height: 0.4em;
   margin-left: 0.25em;
@@ -297,18 +297,12 @@ blockquote:not([class]):not(:last-child) {
   margin-bottom: var(--marginY);
 }
 
-h1,
-.h1,
-h2,
-.h2,
-h3,
-.h3,
-h4,
-.h4,
-h5,
-.h5,
-h6,
-.h6 {
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6 {
   --marginBottom: 40px;
   --tabletFontSize: 32px;
   --mobileFontSize: 24px;
@@ -377,18 +371,12 @@ h6,
 }
 
 @media (max-width: 1280px) {
-  h1,
-  .h1,
-  h2,
-  .h2,
-  h3,
-  .h3,
-  h4,
-  .h4,
-  h5,
-  .h5,
-  h6,
-  .h6 {
+  h1, .h1,
+  h2, .h2,
+  h3, .h3,
+  h4, .h4,
+  h5, .h5,
+  h6, .h6 {
     --marginBottom: 30px;
 
     font-size: var(--tabletFontSize);
@@ -396,18 +384,12 @@ h6,
 }
 
 @media (max-width: 767px) {
-  h1,
-  .h1,
-  h2,
-  .h2,
-  h3,
-  .h3,
-  h4,
-  .h4,
-  h5,
-  .h5,
-  h6,
-  .h6 {
+  h1, .h1,
+  h2, .h2,
+  h3, .h3,
+  h4, .h4,
+  h5, .h5,
+  h6, .h6 {
     --marginBottom: 20px;
 
     font-size: var(--mobileFontSize);
@@ -520,18 +502,24 @@ h6,
 }
 
 .card--hoverable {
+  --shadowBefore: var(--box-shadow-3), var(--box-shadow-inset-transparent);
+  --shadowAfter: var(--box-shadow-3-transparent), var(--box-shadow-inset);
+
+  box-shadow: var(--shadowBefore);
+
   .dom-is-ready & {
     transition: var(--base-transition-duration);
   }
 }
 
+.is-light-theme-enabled .card--hoverable {
+  --shadowBefore: var(--box-shadow-4), var(--box-shadow-inset-2-transparent);
+  --shadowAfter: var(--box-shadow-4-transparent), var(--box-shadow-inset-2);
+}
+
 @media (hover: hover) {
   .card--hoverable:hover {
-    box-shadow: var(--box-shadow-3-transparent), var(--box-shadow-inset);
-  }
-
-  .is-light-theme-enabled .card--hoverable:hover {
-    box-shadow: var(--box-shadow-4-transparent), var(--box-shadow-inset-2);
+    box-shadow: var(--shadowAfter);
   }
 }
 

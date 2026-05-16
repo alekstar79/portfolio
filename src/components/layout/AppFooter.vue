@@ -23,7 +23,7 @@ import { socialItems } from '@/utils/content'
 import SocialLinks from '@/components/ui/SocialLinks.vue'
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .footer {
   margin-top: var(--section-padding-y);
   margin-bottom: calc(var(--section-padding-y) * 1.5);
