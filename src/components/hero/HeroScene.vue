@@ -187,6 +187,7 @@ const { sliderRoot } = useHeroSlider()
 // Laptop top panel
 .laptop-top-panel {
   pointer-events: none;
+  overflow: hidden;
 }
 
 .laptop-top-panel__base {
@@ -199,12 +200,62 @@ const { sliderRoot } = useHeroSlider()
 }
 
 .laptop-top-panel__shine {
+  height: 31%;
+  left: 25%;
+  top: 0;
+  width: 32%;
   will-change: transform;
+  background: radial-gradient(
+    50% 50% at 50% 50%,
+    #dc3daa 0,
+    #bb3491 5%,
+    #8f286f 13%,
+    #691d51 21%,
+    #481438 30%,
+    #2e0d23 40%,
+    #190714 50%,
+    #0b0308 62%,
+    #030102 77%,
+    #000 100%
+  );
+  background-blend-mode: color-dodge;
+  mix-blend-mode: color-dodge;
+
+  .scroll-effect & {
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0);
+    transition-property: opacity, transform;
+    transition-timing-function: var(--transition-timing-function);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+
+  .dom-is-ready .scroll-effect & {
+    transition-duration: 2s, 0.6s;
+  }
+
+  .scroll-effect--visible & {
+    opacity: 1;
+    transform: none;
+    transition-delay: var(--delay);
+    visibility: visible;
+  }
+
+  @for $i from 1 through 20 {
+    .scroll-effect--visible &:nth-child(#{$i}) {
+      --delay: #{($i - 1) * 0.25}s;
+    }
+  }
 }
 
 // Laptop bottom panel
-.laptop-bottom-panel > * {
-  will-change: transform;
+.laptop-bottom-panel {
+  overflow: hidden;
+
+  > * {
+    will-change: transform;
+  }
 }
 
 .laptop-bottom-panel__base {
@@ -259,7 +310,51 @@ const { sliderRoot } = useHeroSlider()
 }
 
 .laptop-bottom-panel__shine {
-  // Shine element styling handled by CSS
+  height: 18%;
+  left: 48%;
+  top: 79%;
+  width: 16%;
+  will-change: transform;
+  background: radial-gradient(
+    50% 49.71% at 50.04% 58.03%,
+    #972a74 0,
+    #8a266a 4%,
+    #601b4a 19%,
+    #3d112f 35%,
+    #230a1b 51%,
+    #0f040c 67%,
+    #040103 83%,
+    #000 100%
+  );
+  background-blend-mode: color-dodge;
+  mix-blend-mode: color-dodge;
+
+  .scroll-effect & {
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0);
+    transition-property: opacity, transform;
+    transition-timing-function: var(--transition-timing-function);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+
+  .dom-is-ready .scroll-effect & {
+    transition-duration: 2s, 0.6s;
+  }
+
+  .scroll-effect--visible & {
+    opacity: 1;
+    transform: none;
+    transition-delay: var(--delay);
+    visibility: visible;
+  }
+
+  @for $i from 1 through 20 {
+    .scroll-effect--visible &:nth-child(#{$i}) {
+      --delay: #{($i - 1) * 0.25}s;
+    }
+  }
 }
 
 // UML Diagram
