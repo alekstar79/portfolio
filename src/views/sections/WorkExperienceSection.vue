@@ -2,14 +2,14 @@
   <section id="work-experience" class="section scroll-effect" data-js-scroll-effect>
     <div class="section__inner container">
       <header class="section__header">
-        <h2 class="section__title">Work <span class="accent-color">Experience</span></h2>
+        <h2 class="section__title">{{ t('sections.workExperience.title').split(' ')[0] }} <span class="accent-color">{{ t('sections.workExperience.title').split(' ').slice(1).join(' ') }}</span></h2>
       </header>
       <div class="section__body">
         <div class="work-experience">
           <ul class="work-experience__list grid">
             <li
               v-for="(item, index) in workExperienceItems"
-              :key="`${item.title}-${index}`"
+              :key="`${item.titleKey ?? item.title ?? index}-${index}`"
               class="work-experience__item grid__item"
               :style="{ '--reveal-delay': `${(index + 1) * 0.2}s` }"
             >
@@ -25,6 +25,9 @@
 <script setup lang="ts">
 import WorkExperienceCard from '@/components/ui/WorkExperienceCard.vue'
 import { workExperienceItems } from '@/utils/content'
+import { useI18n } from '@/composables/useI18n'
+
+const { t } = useI18n()
 </script>
 
 <style lang="scss" scoped>

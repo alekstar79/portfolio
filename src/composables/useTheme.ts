@@ -1,4 +1,5 @@
 import { computed, ref, watch } from 'vue'
+import { useI18n } from './useI18n'
 
 const STORAGE_KEY = 'isLightThemeEnabled'
 
@@ -33,7 +34,7 @@ export function useTheme() {
     }
   })
 
-  const themeLabel = computed(() => (isLightThemeEnabled.value ? 'Disable light theme' : 'Enable light theme'))
-
+  const { t } = useI18n()
+  const themeLabel = computed(() => (isLightThemeEnabled.value ? t('theme.disable_light') : t('theme.enable_light')))
   return { isLightThemeEnabled, initTheme, themeLabel }
 }

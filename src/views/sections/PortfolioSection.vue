@@ -2,12 +2,12 @@
   <section id="portfolio" class="section scroll-effect" data-js-scroll-effect>
     <div class="section__inner container">
       <header class="section__header">
-        <h2 class="section__title">My <span class="accent-color">Portfolio</span></h2>
+        <h2 class="section__title">{{ t('sections.portfolio.title').split(' ')[0] }} <span class="accent-color">{{ t('sections.portfolio.title').split(' ').slice(1).join(' ') }}</span></h2>
       </header>
       <ul class="portfolio__list grid">
         <li
           v-for="(item, index) in portfolioItems"
-          :key="`${item.title}-${index}`"
+          :key="`${item.titleKey ?? item.title ?? index}-${index}`"
           class="portfolio__item grid__item"
           :style="{ '--reveal-delay': `${(index + 1) * 0.2}s` }"
         >
@@ -22,8 +22,10 @@
 import PortfolioCard from '@/components/ui/PortfolioCard.vue'
 import { useGallery } from '@/composables/useGallery'
 import { portfolioItems } from '@/utils/content'
+import { useI18n } from '@/composables/useI18n'
 
 const { openPortfolioItem } = useGallery()
+const { t } = useI18n()
 </script>
 
 <style lang="scss" scoped>

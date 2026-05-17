@@ -1,7 +1,7 @@
 <template>
   <h1 ref="rootRef" class="hero__title live-typing" data-js-live-typing>
     <div class="visually-hidden">
-      Hello! My name is Aleksander Lamkov. I am a frontend developer. I can do some great things for you.
+      {{ t('hero.greeting') }} {{ t('hero.name') }} {{ t('hero.profession') }} {{ t('hero.offerPrefix') }} {{ t('hero.offerSuffix') }}
     </div>
     <div
       v-for="(stage, stageIndex) in stages"
@@ -38,8 +38,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { computed, nextTick, ref, watch } from 'vue'
 import { useLiveTyping } from '@/composables/useLiveTyping'
+import { useI18n } from '@/composables/useI18n'
 
 interface LiveTypingPart {
   type: 'accent' | 'break' | 'text'
@@ -52,28 +53,34 @@ interface LiveTypingStage {
 }
 
 const rootRef = ref<HTMLElement | null>(null)
+const { t, currentLocale } = useI18n()
 
-const stages: LiveTypingStage[] = [
+const stages = computed<LiveTypingStage[]>(() => [
   {
     parts: [
-      { type: 'accent', value: 'Hello!' },
-      { type: 'text', value: ' My name is Aleksander Lamkov.' },
+      { type: 'accent', value: t('hero.greeting') },
+      { type: 'text', value: ` ${t('hero.name')}` },
     ],
   },
   {
     isHideAfterTyping: true,
-    parts: [{ type: 'text', value: 'I am a frontend developer.' }],
+    parts: [{ type: 'text', value: t('hero.profession') }],
   },
   {
     parts: [
-      { type: 'text', value: 'I can do some great ' },
+      { type: 'text', value: `${t('hero.offerPrefix')} ` },
       { type: 'break', value: '' },
-      { type: 'text', value: 'things for you.' },
+      { type: 'text', value: t('hero.offerSuffix') },
     ],
   },
-]
+])
 
-useLiveTyping(rootRef)
+const { refreshTyping } = useLiveTyping(rootRef)
+
+watch(currentLocale, async () => {
+  await nextTick()
+  refreshTyping()
+})
 </script>
 
 <style scoped>

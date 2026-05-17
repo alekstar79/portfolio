@@ -3,16 +3,15 @@
     <div class="footer__inner card">
       <div class="footer__body">
         <div class="footer__title h2">
-          Do you want to ask<br class="hidden-mobile" />
-          <span class="accent-color">something interesting?</span>
+          {{ t('footer.title') }}
         </div>
         <div class="footer__description">
-          <p>Contact me. I am in touch mon-fri from 8 am to 8 pm (gmt).</p>
+          <p>{{ t('footer.description') }}</p>
         </div>
       </div>
       <div class="footer__contacts">
         <SocialLinks :items="socialItems" extra-classes="footer__soc1als" />
-        <div class="footer__copyright">© Alexander Lamkov, 2025</div>
+        <div class="footer__copyright">{{ t('footer.copyright') }}</div>
       </div>
     </div>
   </footer>
@@ -21,6 +20,9 @@
 <script setup lang="ts">
 import { socialItems } from '@/utils/content'
 import SocialLinks from '@/components/ui/SocialLinks.vue'
+import { useI18n } from '@/composables/useI18n'
+
+const { t } = useI18n()
 </script>
 
 <style lang="scss" scoped>

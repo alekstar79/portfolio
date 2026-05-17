@@ -3,8 +3,8 @@
     <div class="mobile-menu__inner container">
       <ul class="mobile-menu__navigation-list">
         <li v-for="item in items" :key="item" class="mobile-menu__navigation-item">
-          <a class="mobile-menu__navigation-link" :href="toAnchor(item)" @click="$emit('close')">
-            {{ item }}
+          <a class="mobile-menu__navigation-link" :href="toAnchorKey(item)" @click="$emit('close')">
+            {{ t(item) }}
           </a>
         </li>
       </ul>
@@ -13,10 +13,17 @@
 </template>
 
 <script setup lang="ts">
+import { useI18n } from '@/composables/useI18n'
+
 defineProps<{ isOpen: boolean; items: readonly string[] }>()
 defineEmits<{ close: [] }>()
 
-const toAnchor = (item: string): string => `#${item.replaceAll(' ', '-').toLowerCase()}`
+const { t } = useI18n()
+
+const toAnchorKey = (item: string): string => {
+  const key = item.split('.').pop() || item
+  return `#${key.replaceAll(' ', '-').toLowerCase()}`
+}
 </script>
 
 <style scoped>

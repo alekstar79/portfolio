@@ -1,6 +1,6 @@
 <template>
   <label class="theme-switcher header__theme-switcher" data-js-theme-switcher :title="themeLabel">
-    <span class="visually-hidden">Switch theme</span>
+    <span class="visually-hidden">{{ t('theme.switch') }}</span>
     <input v-model="isLightThemeEnabled" class="theme-switcher__checkbox visually-hidden" type="checkbox"
       data-js-theme-switcher-checkbox />
     <span class="theme-switcher__body" title="Switch theme">
@@ -18,9 +18,11 @@
 import { onMounted } from 'vue'
 import AppIcon from '@/components/ui/AppIcon.vue'
 import { useTheme } from '@/composables/useTheme'
+import { useI18n } from '@/composables/useI18n'
 
 const { isLightThemeEnabled, initTheme, themeLabel } = useTheme()
 onMounted(initTheme)
+const { t } = useI18n()
 </script>
 
 <style scoped>

@@ -10,14 +10,14 @@
       <img class="portfolio-card__image" :src="`/images/projects/${item.imgName}.jpg`" alt="" width="400" height="320" loading="lazy" />
     </a>
     <div class="portfolio-card__body">
-      <time class="portfolio-card__date" :datetime="item.time.datetime">{{ item.time.label }}</time>
-      <h3 class="portfolio-card__title">
-        <a v-if="item.href" class="portfolio-card__link" :href="item.href" target="_blank" rel="noreferrer" title="Open the website in a new tab">
-          {{ item.title }}
-        </a>
-        <template v-else>{{ item.title }}</template>
-      </h3>
-      <div v-if="item.description" class="portfolio-card__description" v-html="item.description"></div>
+      <time class="portfolio-card__date" :datetime="item.time.datetime">{{ maybeTranslate(item.time.label) }}</time>
+        <h3 class="portfolio-card__title">
+          <a v-if="item.href" class="portfolio-card__link" :href="item.href" target="_blank" rel="noreferrer" title="Open the website in a new tab">
+            {{ maybeTranslate(item.titleKey ?? item.title) }}
+          </a>
+          <template v-else>{{ maybeTranslate(item.titleKey ?? item.title) }}</template>
+        </h3>
+        <div v-if="item.descriptionKey || item.description" class="portfolio-card__description" v-html="maybeTranslate(item.descriptionKey ?? item.description)"></div>
       <StackBadges v-if="item.stack.length > 0" :items="item.stack" />
     </div>
   </article>
@@ -26,9 +26,17 @@
 <script setup lang="ts">
 import type { PortfolioItem } from '@/types/content'
 import StackBadges from './StackBadges.vue'
+import { useI18n } from '@/composables/useI18n'
 
 defineProps<{ item: PortfolioItem }>()
 defineEmits<{ openGallery: [] }>()
+
+const { t } = useI18n()
+
+function maybeTranslate(value?: string) {
+  if (!value) return ''
+  return value.includes('.') ? t(value) : value
+}
 </script>
 
 <style scoped>

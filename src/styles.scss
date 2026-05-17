@@ -232,7 +232,7 @@ a[href^="fax:"] {
   white-space: nowrap;
 }
 
-a[target="_blank"]:not(.soc1als__link)::after {
+a[target="_blank"]:not(.soc1als__link):not(.social-links__link)::after {
   background: url(/images/icons/link.svg) center / contain no-repeat;
   content: "";
   height: 0.4em;

@@ -11,6 +11,11 @@ interface LiveTypingStageInfo {
   stageNode: HTMLElement
 }
 
+interface LiveTypingStageState {
+  visibleChars: number
+  isFullyVisible: boolean
+}
+
 const LIVE_TYPING_STAGE_SELECTOR = '[data-js-live-typing-stage]'
 const LIVE_TYPING_CHAR_SELECTOR = '[data-js-live-typing-char]'
 const IS_VISIBLE_CLASS = 'is-visible'
@@ -37,6 +42,60 @@ export function useLiveTyping(rootRef: Ref<HTMLElement | null>) {
       window.clearTimeout(timerId)
     })
     timers.length = 0
+  }
+
+  const cleanupVisibleClasses = (): void => {
+    const root = rootRef.value
+    if (!root) {
+      return
+    }
+
+    root.querySelectorAll<HTMLElement>(`.${IS_VISIBLE_CLASS}`).forEach((node) => {
+      node.classList.remove(IS_VISIBLE_CLASS)
+    })
+    root.querySelectorAll<HTMLElement>(`.${IS_TYPING_FINISHED_CLASS}`).forEach((node) => {
+      node.classList.remove(IS_TYPING_FINISHED_CLASS)
+    })
+  }
+
+  const measureStageState = (): LiveTypingStageState[] => {
+    return stagesInfo.map((stage) => {
+      const visibleChars = stage.charsNodes.filter((node) => node.classList.contains(IS_VISIBLE_CLASS)).length
+
+      return {
+        visibleChars,
+        isFullyVisible: visibleChars === stage.charsNodes.length,
+      }
+    })
+  }
+
+  const updateStageInfo = (previousStageStates: LiveTypingStageState[] = []): void => {
+    const root = rootRef.value
+    if (!root) {
+      stagesInfo = []
+      return
+    }
+
+    const nextStagesInfo = Array.from(root.querySelectorAll<HTMLElement>(LIVE_TYPING_STAGE_SELECTOR)).map(getStageInfo)
+
+    if (previousStageStates.length) {
+      nextStagesInfo.forEach((stage, index) => {
+        const previousState = previousStageStates[index]
+        if (!previousState) {
+          return
+        }
+
+        const visibleCount = previousState.isFullyVisible
+          ? stage.charsNodes.length
+          : Math.min(previousState.visibleChars, stage.charsNodes.length)
+
+        stage.charsNodes.slice(0, visibleCount).forEach((node) => {
+          node.classList.add(IS_VISIBLE_CLASS)
+        })
+      })
+    }
+
+    stagesInfo = nextStagesInfo
   }
 
   const startTyping = (): void => {
@@ -116,13 +175,30 @@ export function useLiveTyping(rootRef: Ref<HTMLElement | null>) {
     }
   }
 
+  const restartTyping = (): void => {
+    const root = rootRef.value
+    if (!root) {
+      return
+    }
+
+    clearTimers()
+    cleanupVisibleClasses()
+    currentStageIndex = 0
+    updateStageInfo()
+    startTyping()
+  }
+
+  const refreshTyping = (): void => {
+    updateStageInfo(measureStageState())
+  }
+
   onMounted(() => {
     const root = rootRef.value
     if (!root || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       return
     }
 
-    stagesInfo = Array.from(root.querySelectorAll<HTMLElement>(LIVE_TYPING_STAGE_SELECTOR)).map(getStageInfo)
+    updateStageInfo()
     document.addEventListener(PRELOADER_FADE_AWAY_EVENT, onPreloaderFadeAway)
   })
 
@@ -130,4 +206,6 @@ export function useLiveTyping(rootRef: Ref<HTMLElement | null>) {
     document.removeEventListener(PRELOADER_FADE_AWAY_EVENT, onPreloaderFadeAway)
     clearTimers()
   })
+
+  return { restartTyping, refreshTyping }
 }

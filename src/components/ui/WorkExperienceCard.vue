@@ -1,14 +1,14 @@
 <template>
   <article class="work-experience-card card card--hoverable">
-    <time class="work-experience-card__date" :datetime="item.time.datetime">{{ item.time.label }}</time>
+    <time class="work-experience-card__date" :datetime="item.time.datetime">{{ maybeTranslate(item.time.label) }}</time>
     <h3 class="work-experience-card__title">
-      <a v-if="item.href" class="work-experience-card__link" :href="item.href" target="_blank" rel="noreferrer" title="Open a new tab">
-        {{ item.title }}
+        <a v-if="item.href" class="work-experience-card__link" :href="item.href" target="_blank" rel="noreferrer" title="Open a new tab">
+        {{ maybeTranslate(item.titleKey ?? item.title) }}
       </a>
-      <template v-else>{{ item.title }}</template>
+      <template v-else>{{ maybeTranslate(item.titleKey ?? item.title) }}</template>
     </h3>
-    <div class="work-experience-card__position">{{ item.position }}</div>
-    <div v-if="item.description" class="work-experience-card__description" v-html="item.description"></div>
+    <div class="work-experience-card__position">{{ t(item.positionKey) }}</div>
+    <div v-if="item.descriptionKey" class="work-experience-card__description" v-html="t(item.descriptionKey)"></div>
     <StackBadges v-if="item.stack.length > 0" :items="item.stack" />
   </article>
 </template>
@@ -18,6 +18,13 @@ import type { WorkExperienceItem } from '@/types/content'
 import StackBadges from './StackBadges.vue'
 
 defineProps<{ item: WorkExperienceItem }>()
+import { useI18n } from '@/composables/useI18n'
+
+const { t } = useI18n()
+function maybeTranslate(value?: string) {
+  if (!value) return ''
+  return value.includes('.') ? t(value) : value
+}
 </script>
 
 <style scoped>

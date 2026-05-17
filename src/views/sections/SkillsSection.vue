@@ -2,18 +2,18 @@
   <section class="section skills" id="skills">
     <div class="skills__inner grid grid--2 container">
       <div class="skills__column">
-        <h2 class="skills__title"><span class="accent-color">Hard</span> skills</h2>
+        <h2 class="skills__title"><span class="accent-color">{{ t('sections.skills.hard').split(' ')[0] }}</span> {{ t('sections.skills.hard').split(' ').slice(1).join(' ') }}</h2>
         <ul class="skills__list grid scroll-effect" data-js-scroll-effect>
           <li v-for="(skill, index) in hardSkills" :key="skill" class="skills__item grid__item" :style="{ '--reveal-delay': `${(index + 1) * 0.2}s` }">
-            <SkillCard :label="skill" />
+            <SkillCard :label="t(skill)" />
           </li>
         </ul>
       </div>
       <div class="skills__column">
-        <h2 class="skills__title"><span class="accent-color">Soft</span> skills</h2>
+        <h2 class="skills__title"><span class="accent-color">{{ t('sections.skills.soft').split(' ')[0] }}</span> {{ t('sections.skills.soft').split(' ').slice(1).join(' ') }}</h2>
         <ul class="skills__list grid scroll-effect" data-js-scroll-effect>
           <li v-for="(skill, index) in softSkills" :key="skill" class="skills__item grid__item" :style="{ '--reveal-delay': `${(index + 1) * 0.2}s` }">
-            <SkillCard :label="skill" />
+            <SkillCard :label="t(skill)" />
           </li>
         </ul>
       </div>
@@ -24,6 +24,9 @@
 <script setup lang="ts">
 import SkillCard from '@/components/ui/SkillCard.vue'
 import { hardSkills, softSkills } from '@/utils/content'
+import { useI18n } from '@/composables/useI18n'
+
+const { t } = useI18n()
 </script>
 
 <style lang="scss" scoped>
