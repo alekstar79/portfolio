@@ -1,0 +1,139 @@
+{
+  "menu": {
+    "about": "Обо мне",
+    "skills": "Навыки",
+    "portfolio": "Портфолио",
+    "work-experience": "Опыт работы",
+    "contacts": "Контакты"
+  },
+  "theme": {
+    "enable_light": "Включить светлую тему",
+    "disable_light": "Отключить светлую тему",
+    "switch": "Переключить тему"
+  },
+  "language": {
+    "label": "Язык",
+    "english": "English",
+    "russian": "Русский"
+  },
+  "mobile": {
+    "menu": "Меню"
+  },
+  "common": {
+    "home": "Главная"
+  },
+  "hero": {
+    "greeting": "Привет!",
+    "name": "Меня зовут Александр Ламков.",
+    "profession": "Я фронтенд разработчик.",
+    "offerPrefix": "Я могу сделать для вас",
+    "offerSuffix": "отличные вещи.",
+    "button": {
+      "label": "Перейти к контактам",
+      "text": "Проверим!"
+    }
+  },
+  "footer": {
+    "title": "Хотите спросить\nчто-то интересное?",
+    "description": "Свяжитесь со мной. Я на связи пн-пт с 8 до 20 (GMT).",
+    "copyright": "© Александр Ламков, 2025"
+  },
+  "content": {
+    "hardSkills": [
+      "HTML (HTML5), EJS, JSX",
+      "CSS (CSS3), SASS (SCSS), PostCSS, Bootstrap, Tailwind, Анимации",
+      "JavaScript (ES6+, OOP), jQuery, TypeScript",
+      "React",
+      "Redux (Redux Toolkit, Redux Persist), MobX, Zustand",
+      "Formik, React Hook Form, Yup, Axios, React Router, React Query",
+      "Webpack, Vite, Gulp, Rollup",
+      "Jest, React Testing Library, Enzyme, Chai, Mocha, Vitest",
+      "REST API, WebSockets, Long Polling",
+      "BEM, Feature-Sliced Design, Доступность, UX",
+      "Git (GitHub, BitBucket, GitLab)",
+      "Figma, Adobe Photoshop, Avocode",
+      "CMS 1C-Bitrix, Drupal, OpenCart, MODX",
+      "Базовые знания PHP, Blade, Twig",
+      "Agile, Waterfall, SCRUM",
+      "Грамотная устная и письменная речь",
+      "Уровень английского - B1"
+    ],
+    "softSkills": [
+      "Умею работать в команде, есть опыт взаимодействия с дизайнерами, менеджерами и другими разработчиками",
+      "Ответственно отношусь к срокам",
+      "Внимателен к деталям технического задания",
+      "Требователен к качеству кода, соблюдаю code-style",
+      "Умею планировать и управлять временем",
+      "Принимаю конструктивную критику и рад находить новые точки роста",
+      "Умею решать конфликтные ситуации",
+      "Умение корректно излагать мысли и формулировать вопросы",
+      "Пишу детальные отчёты о проделанной работе при необходимости",
+      "Есть опыт работы в распределённых командах (удалённо)",
+      "Есть опыт наставничества и обучения джуниоров",
+      "Мотивирован постоянно улучшать навыки и изучать новые технологии"
+    ],
+    "portfolio": [
+      {
+        "title": "Fancy Auth Form",
+        "description": "Минималистичная форма авторизации на SPA с интеграцией нескольких технологий: Vite, TypeScript, React, React Router, Redux, Redux Toolkit, Redux Persist, Formik, Yup, classNames, PostCSS, Vite SVG icon, Vitest и т.д.",
+        "timeLabel": "Август 2022"
+      },
+      {
+        "title": "Adeart - онлайн магазин подарков",
+        "description": "Мультистраничный интернет-магазин.",
+        "timeLabel": "Январь 2022"
+      },
+      {
+        "title": "Мультистраничный сайт крупного банка региона",
+        "description": "В проекте реализовано много сложных компонентов: кредитные калькуляторы, многошаговые формы подачи заявок, асинхронный фильтр сервисов, пользовательские карты (REST API YandexMap) с банкоматами и офисами.",
+        "timeLabel": "Декабрь 2021"
+      }
+    ],
+    "workExperience": [
+      {
+        "timeLabel": "Сентябрь 2022 - По настоящее время",
+        "title": "VK Team",
+        "position": "Frontend Engineer",
+        "description": "<p>Разработка и поддержка фронтенда внутренних инструментов компании, автоматизация процессов разработки.</p>"
+      },
+      {
+        "timeLabel": "Июнь 2021 - Сентябрь 2022",
+        "title": "Digital Element",
+        "position": "Frontend Developer",
+        "description": "<p>Разработка фронтенда в области e-commerce и fintech. Разработка на чистом JavaScript в ООП-стиле. Создание простых React компонентов. Написание автотестов для интерфейсных компонентов.</p>"
+      },
+      {
+        "timeLabel": "Сентябрь 2020 - Май 2021",
+        "title": "Ribbla",
+        "position": "Frontend Developer",
+        "description": "<p>Разработка фронтенда лендингов и e-commerce проектов.</p>"
+      },
+      {
+        "timeLabel": "Июль 2019 - Август 2020",
+        "title": "Фриланс",
+        "position": "Web Developer",
+        "description": "<p>Разработка сайтов. Исправление багов верстки. Написание простых скриптов.</p>"
+      }
+    ],
+    "social": {
+      "GitHub": "GitHub",
+      "LinkedIn": "LinkedIn",
+      "Telegram": "Telegram",
+      "Email": "Email",
+      "Boosty": "Boosty",
+      "YouTube": "YouTube"
+    }
+  },
+  "sections": {
+    "skills": {
+      "hard": "Hard навыки",
+      "soft": "Soft навыки"
+    },
+    "portfolio": {
+      "title": "Моё портфолио"
+    },
+    "workExperience": {
+      "title": "Опыт работы"
+    }
+  }
+}

@@ -1,4 +1,4 @@
-import { onMounted, onUnmounted, type Ref } from 'vue'
+import { onMounted, onUnmounted, type Ref, nextTick } from 'vue'
 import { PRELOADER_FADE_AWAY_EVENT } from '@/composables/usePreloader'
 
 export interface LiveTypingStageDefinition {
@@ -26,7 +26,7 @@ export function useLiveTyping(rootRef: Ref<HTMLElement | null>) {
   const cfg = {
     delayBetweenCharsTyping: 90,
     delayBetweenCharsRemoving: 35,
-    delayBetweenStages: 400,
+    delayBetweenStages: 700, // increased from 400 for clear visual separation between phases
   }
 
   let stagesInfo: LiveTypingStageInfo[] = []
@@ -104,15 +104,53 @@ export function useLiveTyping(rootRef: Ref<HTMLElement | null>) {
       return
     }
 
+    if (stagesInfo.length === 0) {
+      // nothing ready yet — try to refresh info and retry shortly
+      try {
+        updateStageInfo()
+      } catch (e) { }
+      // schedule retry
+      schedule(() => startTyping(), 200)
+      return
+    }
+
     if (currentStageIndex === stagesInfo.length) {
       root.classList.add(IS_TYPING_FINISHED_CLASS)
       return
     }
 
     const currentStage = stagesInfo[currentStageIndex]
+    if (!currentStage) {
+      // defensive: no stage found for current index
+      // try to refresh and retry
+      try {
+        updateStageInfo()
+      } catch (e) { }
+      schedule(() => startTyping(), 200)
+      return
+    }
+
     let visibleChars = 0
 
+    // mark stage visible
     currentStage.stageNode.classList.add(IS_VISIBLE_CLASS)
+
+    // If stage has no chars, handle immediately according to config
+    if (!currentStage.charsNodes.length) {
+      if (currentStage.isHideAfterTyping) {
+        // nothing to remove, proceed to next stage after short delay
+        schedule(() => {
+          currentStage.stageNode.classList.remove(IS_VISIBLE_CLASS)
+          currentStageIndex += 1
+          startTyping()
+        }, cfg.delayBetweenStages)
+        return
+      }
+
+      currentStageIndex += 1
+      schedule(() => startTyping(), cfg.delayBetweenStages)
+      return
+    }
 
     currentStage.charsNodes.forEach((charNode, index) => {
       schedule(() => {
@@ -138,25 +176,45 @@ export function useLiveTyping(rootRef: Ref<HTMLElement | null>) {
     const reverseChars = [...stage.charsNodes].reverse()
     let hiddenChars = 0
 
+    if (!reverseChars.length) {
+      // nothing to remove — finalize stage immediately
+      schedule(() => {
+        stage.stageNode.classList.remove(IS_VISIBLE_CLASS)
+        currentStageIndex += 1
+        startTyping()
+      }, cfg.delayBetweenStages)
+      return
+    }
+
     reverseChars.forEach((charNode, index) => {
       schedule(() => {
         charNode.classList.remove(IS_VISIBLE_CLASS)
         hiddenChars += 1
 
         if (hiddenChars === reverseChars.length) {
+          // hide current stage
           schedule(() => {
             stage.stageNode.classList.remove(IS_VISIBLE_CLASS)
+          }, cfg.delayBetweenStages)
+          // after stage is hidden, proceed to next stage with small gap for browser render
+          schedule(() => {
             currentStageIndex += 1
             startTyping()
-          }, cfg.delayBetweenStages)
+          }, cfg.delayBetweenStages + 50)
         }
       }, index * cfg.delayBetweenCharsRemoving)
     })
   }
 
   const onPreloaderFadeAway = (): void => {
-    schedule(() => {
-      startTyping()
+    schedule(async () => {
+      // ensure stages are (re)built before starting
+      try {
+        // call restartTyping to rebuild and start after DOM updates
+        await restartTyping()
+      } catch (e) {
+        schedule(() => startTyping(), 300)
+      }
     }, 300)
   }
 
@@ -175,7 +233,7 @@ export function useLiveTyping(rootRef: Ref<HTMLElement | null>) {
     }
   }
 
-  const restartTyping = (): void => {
+  const restartTyping = async (): Promise<void> => {
     const root = rootRef.value
     if (!root) {
       return
@@ -184,7 +242,19 @@ export function useLiveTyping(rootRef: Ref<HTMLElement | null>) {
     clearTimers()
     cleanupVisibleClasses()
     currentStageIndex = 0
+
+    // wait for DOM to settle (stages rendered)
+    try {
+      await nextTick()
+    } catch (e) { }
+
     updateStageInfo()
+
+    // ensure update applied
+    try {
+      await nextTick()
+    } catch (e) { }
+
     startTyping()
   }
 

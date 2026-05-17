@@ -2,7 +2,8 @@
   <article class="work-experience-card card card--hoverable">
     <time class="work-experience-card__date" :datetime="item.time.datetime">{{ maybeTranslate(item.time.label) }}</time>
     <h3 class="work-experience-card__title">
-        <a v-if="item.href" class="work-experience-card__link" :href="item.href" target="_blank" rel="noreferrer" title="Open a new tab">
+      <a v-if="item.href" class="work-experience-card__link" :href="item.href" target="_blank" rel="noreferrer"
+        title="Open a new tab">
         {{ maybeTranslate(item.titleKey ?? item.title) }}
       </a>
       <template v-else>{{ maybeTranslate(item.titleKey ?? item.title) }}</template>

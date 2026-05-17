@@ -2,7 +2,8 @@
   <div :class="rootClasses">
     <ul class="social-links__list">
       <li v-for="item in items" :key="item.href" class="social-links__item">
-        <a class="social-links__link" :href="item.href" target="_blank" :title="t(item.label)" :aria-label="t(item.label)">
+        <a class="social-links__link" :href="item.href" target="_blank" :title="t(item.label)"
+          :aria-label="t(item.label)">
           <AppIcon :name="item.icon" variant="mono" />
         </a>
       </li>

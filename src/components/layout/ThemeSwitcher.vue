@@ -25,7 +25,7 @@ onMounted(initTheme)
 const { t } = useI18n()
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .theme-switcher {
   --padding: 2px;
   --iconWrapperWidth: 42px;

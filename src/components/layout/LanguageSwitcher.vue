@@ -1,27 +1,15 @@
 <template>
   <label class="language-switcher header__language-switcher" :title="t('language.label')" @click.prevent>
     <span class="visually-hidden">{{ t('language.label') }}</span>
-    <input
-      class="language-switcher__checkbox visually-hidden"
-      type="checkbox"
-      :checked="currentLocale === 'ru'"
-      aria-hidden="true"
-    />
+    <input class="language-switcher__checkbox visually-hidden" type="checkbox" :checked="currentLocale === 'ru'"
+      aria-hidden="true" />
     <span class="language-switcher__body" role="group" aria-label="Language switcher">
-      <button
-        type="button"
-        class="language-switcher__item language-switcher__item--en"
-        @click.stop.prevent="setLocale('en')"
-        :aria-pressed="currentLocale === 'en'"
-      >
+      <button type="button" class="language-switcher__item language-switcher__item--en"
+        @click.stop.prevent="setLocale('en')" :aria-pressed="currentLocale === 'en'">
         EN
       </button>
-      <button
-        type="button"
-        class="language-switcher__item language-switcher__item--ru"
-        @click.stop.prevent="setLocale('ru')"
-        :aria-pressed="currentLocale === 'ru'"
-      >
+      <button type="button" class="language-switcher__item language-switcher__item--ru"
+        @click.stop.prevent="setLocale('ru')" :aria-pressed="currentLocale === 'ru'">
         RU
       </button>
     </span>
@@ -34,7 +22,7 @@ import { useI18n } from '@/composables/useI18n'
 const { currentLocale, setLocale, t } = useI18n()
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .language-switcher {
   --padding: 2px;
   --iconWrapperWidth: 42px;
