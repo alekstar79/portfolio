@@ -1,7 +1,8 @@
 <template>
   <label class="theme-switcher header__theme-switcher" data-js-theme-switcher :title="themeLabel">
     <span class="visually-hidden">Switch theme</span>
-    <input v-model="isLightThemeEnabled" class="theme-switcher__checkbox visually-hidden" type="checkbox" data-js-theme-switcher-checkbox />
+    <input v-model="isLightThemeEnabled" class="theme-switcher__checkbox visually-hidden" type="checkbox"
+      data-js-theme-switcher-checkbox />
     <span class="theme-switcher__body" title="Switch theme">
       <span class="theme-switcher__icon-wrapper theme-switcher__icon-wrapper--dark-theme">
         <AppIcon name="moon" />
@@ -45,7 +46,7 @@ onMounted(initTheme)
   box-shadow: var(--box-shadow-4);
 }
 
-.theme-switcher__checkbox:focus-visible ~ .theme-switcher__body {
+.theme-switcher__checkbox:focus-visible~.theme-switcher__body {
   outline: var(--focus-outline);
   outline-offset: 4px;
 }
@@ -70,6 +71,7 @@ onMounted(initTheme)
   border-radius: inherit;
   transform: translate3d(0, -50%, 0);
   will-change: transform;
+  z-index: 0;
 }
 
 .is-light-theme-enabled .theme-switcher__body::after {
@@ -88,14 +90,34 @@ onMounted(initTheme)
 
 .theme-switcher__icon-wrapper :deep(.i-icon) {
   --size: var(--iconSize);
-  --color: var(--c-white);
+  fill: var(--color) !important;
+}
+
+.theme-switcher__icon-wrapper :deep(.i-icon) *,
+.theme-switcher__icon-wrapper :deep(.i-icon) path {
+  fill: inherit !important;
 }
 
 .theme-switcher__icon-wrapper--dark-theme :deep(.i-icon) {
+  --color: var(--c-white);
+}
+
+.theme-switcher__icon-wrapper--light-theme :deep(.i-icon) {
+  --color: var(--c-white);
+}
+
+.theme-switcher__checkbox:checked~.theme-switcher__body .theme-switcher__icon-wrapper--light-theme :deep(.i-icon),
+.is-light-theme-enabled .theme-switcher__icon-wrapper--light-theme :deep(.i-icon) {
+  --color: var(--c-dark);
+  filter: invert(1);
+}
+
+.is-light-theme-enabled .theme-switcher__icon-wrapper--dark-theme :deep(.i-icon) {
   --color: var(--c-dark);
 }
 
-.is-light-theme-enabled .theme-switcher__icon-wrapper--light-theme :deep(.i-icon) {
-  --color: var(--c-dark);
+.theme-switcher__checkbox:checked~.theme-switcher__body .theme-switcher__icon-wrapper--dark-theme :deep(.i-icon),
+.is-light-theme-enabled .theme-switcher__icon-wrapper--dark-theme :deep(.i-icon) {
+  --color: var(--c-white);
 }
 </style>
