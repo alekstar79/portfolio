@@ -2,7 +2,7 @@
   <div :class="rootClasses">
     <ul class="social-links__list">
       <li v-for="item in items" :key="item.href" class="social-links__item">
-        <a class="social-links__link" :href="item.href" target="_blank" :title="t(item.label)"
+        <a class="social-links__link" :href="item.href" :title="t(item.label)" target="_blank"
           :aria-label="t(item.label)">
           <AppIcon :name="item.icon" variant="mono" />
         </a>
@@ -89,9 +89,16 @@ const { t } = useI18n()
   }
 }
 
-.social-links__link :deep(.i-icon) {
-  --size: 62.5%;
-  --color: var(--c-light);
+.social-links__link {
+  :deep(.i-icon) {
+    --size: 62.5%;
+    --color: var(--c-light);
+  }
+
+  &[title="Max"] :deep(.i-icon) {
+    --size: 50%;
+  }
+
 }
 
 .is-light-theme-enabled .social-links__link :deep(.i-icon) {

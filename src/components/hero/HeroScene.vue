@@ -43,7 +43,7 @@
       <div class="code-signs__sign code-signs__sign--left code-signs__sign--tag">&lt;\&gt;</div>
       <div class="code-signs__sign code-signs__sign--left code-signs__sign--ts">TS</div>
       <div class="code-signs__sign code-signs__sign--right code-signs__sign--react">Vue</div>
-      <div class="code-signs__sign code-signs__sign--right code-signs__sign--postcss">PostCSS</div>
+      <div class="code-signs__sign code-signs__sign--right code-signs__sign--postcss">SCSS</div>
       <div class="code-signs__sign code-signs__sign--left code-signs__sign--js">JS</div>
       <div class="code-signs__sign code-signs__sign--left code-signs__sign--stars">******</div>
       <div class="code-signs__sign code-signs__sign--left code-signs__sign--triangles">

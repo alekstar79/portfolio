@@ -24,7 +24,7 @@
   },
   "hero": {
     "greeting": "Hello!",
-    "name": "My name is Aleksander Lamkov.",
+    "name": "My name is Aleksey Tarasenko.",
     "profession": "I am a frontend developer.",
     "offerPrefix": "I can do some great",
     "offerSuffix": "things for you.",
@@ -36,7 +36,7 @@
   "footer": {
     "title": "Do you want to ask\nsomething interesting?",
     "description": "Contact me. I am in touch mon-fri from 8 am to 8 pm (gmt).",
-    "copyright": "© Alexander Lamkov, 2025"
+    "copyright": "© Aleksey Tarasenko 2026"
   },
   "content": {
     "hardSkills": [
@@ -117,11 +117,9 @@
     ],
     "social": {
       "GitHub": "GitHub",
-      "LinkedIn": "LinkedIn",
       "Telegram": "Telegram",
-      "Email": "Email",
-      "Boosty": "Boosty",
-      "YouTube": "YouTube"
+      "Max": "Max",
+      "Email": "Email"
     }
   },
   "sections": {

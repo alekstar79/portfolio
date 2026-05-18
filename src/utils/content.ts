@@ -1,6 +1,12 @@
 import type { PortfolioItem, SocialItem, WorkExperienceItem } from '@/types/content'
 
-export const menuItems = ['menu.about', 'menu.skills', 'menu.portfolio', 'menu.work-experience', 'menu.contacts'] as const
+export const menuItems = [
+  'menu.about',
+  'menu.skills',
+  'menu.portfolio',
+  'menu.work-experience',
+  'menu.contacts'
+] as const
 
 export const hardSkills: string[] = [
   'content.hardSkills.0',
@@ -44,7 +50,7 @@ export const portfolioItems: PortfolioItem[] = [
     titleKey: 'content.portfolio.0.title',
     href: 'https://aleksanderlamkov.github.io/fancy-auth-form/',
     descriptionKey: 'content.portfolio.0.description',
-    stack: ['Vite', 'TypeScript', 'React', 'React Router', 'Redux', 'Redux Toolkit', 'Redux Persist', 'Formik', 'Yup', 'PostCSS', 'Vitest'],
+    stack: ['TypeScript', 'Vite', 'Vue', 'Vue Router', 'Vuex', 'Redux Toolkit', 'Redux Persist', 'Formik', 'Yup', 'PostCSS', 'Vitest'],
     hasImageWrapperBorder: true,
   },
   {
@@ -53,7 +59,7 @@ export const portfolioItems: PortfolioItem[] = [
     titleKey: 'content.portfolio.1.title',
     href: 'https://adeart.ru/',
     descriptionKey: 'content.portfolio.1.description',
-    stack: ['EJS', 'PostCSS', 'JS', 'WebPack'],
+    stack: ['JS', 'Vue', 'SCSS', 'WebPack'],
   },
   {
     imgName: '2021-12',
@@ -99,10 +105,8 @@ export const workExperienceItems: WorkExperienceItem[] = [
 ]
 
 export const socialItems: SocialItem[] = [
-  { label: 'content.social.GitHub', href: 'https://github.com/aleksanderlamkov', icon: 'github' },
-  { label: 'content.social.LinkedIn', href: 'https://www.linkedin.com/in/aleksander-lamkov-569b87231/?locale=en_US', icon: 'linkedin' },
-  { label: 'content.social.Telegram', href: 'https://t.me/AleksanderLamkov', icon: 'telegram' },
-  { label: 'content.social.Email', href: 'mailto:aleksanderlamkov@gmail.com', icon: 'email' },
-  { label: 'content.social.Boosty', href: 'https://boosty.to/friendly-frontend', icon: 'boosty' },
-  { label: 'content.social.YouTube', href: 'https://www.youtube.com/@AleksanderLamkov', icon: 'youtube' },
+  { label: 'content.social.GitHub', href: 'https://github.com/alekstar79', icon: 'github' },
+  { label: 'content.social.Max', href: 'https://max.ru/u/f9LHodD0cOLX8Cx6cnzAXbjyxtz5ukKF2bLAIjZRpqQfpdMT68sEQ9Q6BwQ', icon: 'max' },
+  { label: 'content.social.Telegram', href: 'https://t.me/alekstar79', icon: 'telegram' },
+  { label: 'content.social.Email', href: 'mailto:alekstar79@yandex.ru', icon: 'email' }
 ]

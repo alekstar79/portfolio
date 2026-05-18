@@ -24,7 +24,7 @@
   },
   "hero": {
     "greeting": "Привет!",
-    "name": "Меня зовут Александр Ламков.",
+    "name": "Меня зовут Алексей Тарасенко.",
     "profession": "Я фронтенд разработчик.",
     "offerPrefix": "Я могу сделать для вас",
     "offerSuffix": "отличные вещи.",
@@ -36,7 +36,7 @@
   "footer": {
     "title": "Хотите спросить\nчто-то интересное?",
     "description": "Свяжитесь со мной. Я на связи пн-пт с 8 до 20 (GMT).",
-    "copyright": "© Александр Ламков, 2025"
+    "copyright": "© Алексей Тарасенко 2026"
   },
   "content": {
     "hardSkills": [
@@ -117,11 +117,9 @@
     ],
     "social": {
       "GitHub": "GitHub",
-      "LinkedIn": "LinkedIn",
       "Telegram": "Telegram",
-      "Email": "Email",
-      "Boosty": "Boosty",
-      "YouTube": "YouTube"
+      "Max": "Max",
+      "Email": "Email"
     }
   },
   "sections": {
