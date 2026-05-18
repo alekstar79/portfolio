@@ -76,20 +76,22 @@
     </div>
     <!-- Hero Slider -->
     <div class="hero-slider" ref="sliderRoot" data-js-slider>
-      <button class="hero-slider__button hero-slider__button--prev" type="button" title="To prev slide" aria-label="To prev slide">
-        <AppIcon name="arrow-left" />
+      <button class="hero-slider__button hero-slider__button--prev" type="button" title="To prev slide"
+        aria-label="To prev slide">
+        <AppIcon name="arrow-left" color="hsla(0, 0%, 100%, 0.64)" />
       </button>
       <div class="hero-slider__inner swiper">
         <ul class="hero-slider__list swiper-wrapper">
           <li v-for="icon in heroSliderIcons" :key="icon" class="hero-slider__item swiper-slide">
             <div class="hero-slider__icon-wrapper">
-              <AppIcon :name="icon" />
+              <AppIcon :name="icon" color="#fff9d8" />
             </div>
           </li>
         </ul>
       </div>
-      <button class="hero-slider__button hero-slider__button--next" type="button" title="To next slide" aria-label="To next slide">
-        <AppIcon name="arrow-right" />
+      <button class="hero-slider__button hero-slider__button--next" type="button" title="To next slide"
+        aria-label="To next slide">
+        <AppIcon name="arrow-right" color="hsla(0, 0%, 100%, 0.64)" />
       </button>
     </div>
   </div>
@@ -143,7 +145,6 @@ const { sliderRoot } = useHeroSlider()
 </script>
 
 <style lang="scss" scoped>
-// Hero scene container
 .hero-scene {
   --size: 600px;
   --borderRadius: 20px;
@@ -171,7 +172,7 @@ const { sliderRoot } = useHeroSlider()
   }
 
   // Enable pointer events for interactive elements inside
-  > * {
+  >* {
     pointer-events: auto;
   }
 }
@@ -331,8 +332,7 @@ const { sliderRoot } = useHeroSlider()
       rgba(46, 13, 35, 0.14) 40%,
       rgba(25, 7, 20, 0.08) 50%,
       rgba(11, 3, 8, 0.04) 62%,
-      transparent 77%
-    );
+      transparent 77%);
   }
 
   @media (max-width: 767px) {
@@ -343,7 +343,7 @@ const { sliderRoot } = useHeroSlider()
 }
 
 .laptop-bottom-panel {
-  > * {
+  >* {
     will-change: transform;
   }
 }
@@ -479,8 +479,7 @@ const { sliderRoot } = useHeroSlider()
       rgba(61, 17, 47, 0.34) 35%,
       rgba(35, 10, 27, 0.18) 51%,
       rgba(15, 4, 12, 0.08) 67%,
-      transparent 83%
-    );
+      transparent 83%);
   }
 }
 
@@ -507,7 +506,7 @@ const { sliderRoot } = useHeroSlider()
   .dom-is-ready .scroll-effect & {
     transition-duration: 2s, 0.6s;
 
-    > * {
+    >* {
       transition: var(--base-transition-duration);
     }
   }
@@ -527,7 +526,7 @@ const { sliderRoot } = useHeroSlider()
   }
 
   // UML elements transformation
-  > * {
+  >* {
     transform: rotate(35deg) skew(35deg, -5deg);
     will-change: transform;
 
@@ -859,8 +858,7 @@ const { sliderRoot } = useHeroSlider()
     165.08deg,
     rgba(73, 116, 201, 0.64) -10.2%,
     rgba(98, 71, 202, 0.64) 49.62%,
-    rgba(108, 35, 182, 0.64) 113.6%
-  );
+    rgba(108, 35, 182, 0.64) 113.6%);
   border: 1px solid rgba(205, 106, 232, 0.8);
   border-bottom: none;
   border-left: none;
@@ -1061,8 +1059,7 @@ const { sliderRoot } = useHeroSlider()
     165.08deg,
     rgba(73, 116, 201, 0.64) -10.2%,
     rgba(98, 71, 202, 0.64) 49.62%,
-    rgba(108, 35, 182, 0.64) 113.6%
-  );
+    rgba(108, 35, 182, 0.64) 113.6%);
   border-radius: calc(var(--borderRadius) * 1.75);
   box-shadow: var(--shadowSize) calc(var(--shadowSize) * -1) 0 0 rgba(43, 15, 145, 0.64);
   display: flex;
@@ -1133,12 +1130,12 @@ const { sliderRoot } = useHeroSlider()
   }
 
   .i-icon {
-    --color: hsla(0, 0%, 100%, 0.64);
+    --icon-color: hsla(0, 0%, 100%, 0.64);
   }
 
   @media (hover: hover) {
     &:hover .i-icon {
-      --color: var(--c-accent);
+      --icon-color: var(--c-accent);
     }
   }
 }
@@ -1147,10 +1144,6 @@ const { sliderRoot } = useHeroSlider()
   margin-left: var(--marginX);
   margin-right: var(--marginX);
   max-width: calc(var(--slideSize) * var(--slidesPerView) + var(--marginX) * (var(--slidesPerView) - 1));
-}
-
-.hero-slider__list {
-  // Swiper wrapper styling handled by Swiper library
 }
 
 .hero-slider__item {
@@ -1171,13 +1164,17 @@ const { sliderRoot } = useHeroSlider()
   }
 
   .i-icon {
+    --icon-color: #fff9d8;
     --size: 60%;
-    --color: #fff9d8;
   }
 
   @media (hover: hover) {
     &:hover {
       background-color: var(--c-accent);
+
+      .i-icon {
+        --icon-color: var(--c-accent);
+      }
     }
   }
 }

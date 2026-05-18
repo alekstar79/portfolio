@@ -22,6 +22,25 @@ function makeGraphicMonochrome(node: SVGElement): void {
   }
 }
 
+function convertFillToCurrentColor(node: SVGElement): void {
+  // Replace inline fill/stroke colors with CSS variable for better control
+  const fillValue = node.getAttribute('fill')
+  const strokeValue = node.getAttribute('stroke')
+
+  node.removeAttribute('style')
+
+  // Use CSS variable that can be controlled from parent via CSS
+  if (fillValue && fillValue !== 'none') {
+    node.setAttribute('fill', 'var(--icon-color)')
+  } else if (!fillValue && !['line', 'polyline'].includes(node.tagName)) {
+    node.setAttribute('fill', 'var(--icon-color)')
+  }
+
+  if (strokeValue && strokeValue !== 'none') {
+    node.setAttribute('stroke', 'var(--icon-color)')
+  }
+}
+
 function createMonochromeVariant(symbolNode: SVGSymbolElement): SVGSymbolElement {
   const monoSymbol = symbolNode.cloneNode(true) as SVGSymbolElement
   monoSymbol.id = `${symbolNode.id}${MONO_SUFFIX}`
@@ -41,6 +60,11 @@ function enrichSpriteWithVariants(spriteRoot: ParentNode): void {
 
   const symbols = Array.from(defsNode.querySelectorAll<SVGSymbolElement>('symbol'))
   symbols.forEach((symbolNode) => {
+    // Convert original icons to use currentColor for CSS control
+    symbolNode.querySelectorAll<SVGElement>(SVG_GRAPHIC_SELECTOR).forEach((node) => {
+      convertFillToCurrentColor(node)
+    })
+
     const monoId = `${symbolNode.id}${MONO_SUFFIX}`
     if (!defsNode.querySelector(`#${monoId}`)) {
       defsNode.appendChild(createMonochromeVariant(symbolNode))
