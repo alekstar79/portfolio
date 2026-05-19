@@ -406,6 +406,13 @@ const { sliderRoot } = useHeroSlider()
   cursor: pointer;
   grid-column: span var(--columns);
   will-change: transform;
+  transition: background-color 0.2s ease;
+
+  @media (hover: hover) {
+    &:hover {
+      background-color: #d8c2e3;
+    }
+  }
 
   .scroll-effect & {
     backface-visibility: hidden;
@@ -469,6 +476,7 @@ const { sliderRoot } = useHeroSlider()
   left: 20.5%;
   top: 52.3%;
   width: 51.8%;
+  pointer-events: none;
 
   &::before {
     background: radial-gradient(

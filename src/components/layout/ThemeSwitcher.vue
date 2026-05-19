@@ -92,34 +92,18 @@ const { t } = useI18n()
 
 .theme-switcher__icon-wrapper :deep(.i-icon) {
   --size: var(--iconSize);
-  fill: var(--color) !important;
+  color: var(--color);
 }
 
-.theme-switcher__icon-wrapper :deep(.i-icon) *,
-.theme-switcher__icon-wrapper :deep(.i-icon) path {
-  fill: inherit !important;
-}
-
-.theme-switcher__icon-wrapper--dark-theme :deep(.i-icon) {
-  --color: var(--c-white);
-}
-
+.theme-switcher__icon-wrapper--dark-theme :deep(.i-icon),
 .theme-switcher__icon-wrapper--light-theme :deep(.i-icon) {
   --color: var(--c-white);
 }
 
 .theme-switcher__checkbox:checked~.theme-switcher__body .theme-switcher__icon-wrapper--light-theme :deep(.i-icon),
-.is-light-theme-enabled .theme-switcher__icon-wrapper--light-theme :deep(.i-icon) {
-  --color: var(--c-dark);
-  filter: invert(1);
-}
-
-.is-light-theme-enabled .theme-switcher__icon-wrapper--dark-theme :deep(.i-icon) {
-  --color: var(--c-dark);
-}
-
+.is-light-theme-enabled .theme-switcher__icon-wrapper--light-theme :deep(.i-icon),
 .theme-switcher__checkbox:checked~.theme-switcher__body .theme-switcher__icon-wrapper--dark-theme :deep(.i-icon),
 .is-light-theme-enabled .theme-switcher__icon-wrapper--dark-theme :deep(.i-icon) {
-  --color: var(--c-white);
+  --color: var(--c-dark);
 }
 </style>
