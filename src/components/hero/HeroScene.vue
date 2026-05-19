@@ -4,15 +4,8 @@
       <div class="laptop-bottom-panel__shadow"></div>
       <div class="laptop-bottom-panel__base"></div>
       <div class="laptop-bottom-panel__keyboard">
-        <button
-          v-for="index in 70"
-          :key="index"
-          class="laptop-bottom-panel__key"
-          :class="getKeyboardClass(index - 1)"
-          type="button"
-          tabindex="-1"
-          aria-hidden="true"
-        ></button>
+        <button v-for="index in 70" :key="index" class="laptop-bottom-panel__key" :class="getKeyboardClass(index - 1)"
+          type="button" tabindex="-1" aria-hidden="true"></button>
       </div>
       <div class="laptop-bottom-panel__shine"></div>
     </div>
@@ -177,10 +170,10 @@ const { sliderRoot } = useHeroSlider()
   }
 }
 
-.code-signs > *,
-.laptop-bottom-panel > *,
-.laptop-top-panel > *,
-.uml-diagram > * {
+.code-signs>*,
+.laptop-bottom-panel>*,
+.laptop-top-panel>*,
+.uml-diagram>* {
   position: absolute;
 }
 
@@ -322,17 +315,16 @@ const { sliderRoot } = useHeroSlider()
   width: 45.3%;
 
   &::before {
-    background: radial-gradient(
-      50% 50% at 0% 0%,
-      rgba(220, 61, 170, 0.95) 0,
-      rgba(187, 52, 145, 0.75) 5%,
-      rgba(143, 40, 111, 0.56) 13%,
-      rgba(105, 29, 81, 0.4) 21%,
-      rgba(72, 20, 56, 0.25) 30%,
-      rgba(46, 13, 35, 0.14) 40%,
-      rgba(25, 7, 20, 0.08) 50%,
-      rgba(11, 3, 8, 0.04) 62%,
-      transparent 77%);
+    background: radial-gradient(50% 50% at 0% 0%,
+        rgba(220, 61, 170, 0.95) 0,
+        rgba(187, 52, 145, 0.75) 5%,
+        rgba(143, 40, 111, 0.56) 13%,
+        rgba(105, 29, 81, 0.4) 21%,
+        rgba(72, 20, 56, 0.25) 30%,
+        rgba(46, 13, 35, 0.14) 40%,
+        rgba(25, 7, 20, 0.08) 50%,
+        rgba(11, 3, 8, 0.04) 62%,
+        transparent 77%);
   }
 
   @media (max-width: 767px) {
@@ -479,15 +471,14 @@ const { sliderRoot } = useHeroSlider()
   pointer-events: none;
 
   &::before {
-    background: radial-gradient(
-      50% 49.71% at 76% 100%,
-      rgba(151, 42, 116, 0.95) 0,
-      rgba(138, 38, 106, 0.74) 4%,
-      rgba(96, 27, 74, 0.52) 19%,
-      rgba(61, 17, 47, 0.34) 35%,
-      rgba(35, 10, 27, 0.18) 51%,
-      rgba(15, 4, 12, 0.08) 67%,
-      transparent 83%);
+    background: radial-gradient(50% 49.71% at 76% 100%,
+        rgba(151, 42, 116, 0.95) 0,
+        rgba(138, 38, 106, 0.74) 4%,
+        rgba(96, 27, 74, 0.52) 19%,
+        rgba(61, 17, 47, 0.34) 35%,
+        rgba(35, 10, 27, 0.18) 51%,
+        rgba(15, 4, 12, 0.08) 67%,
+        transparent 83%);
   }
 }
 
@@ -651,6 +642,7 @@ const { sliderRoot } = useHeroSlider()
 }
 
 .uml-diagram__direction-line {
+
   &--top-left,
   &--top-right,
   &--bottom {
@@ -862,11 +854,10 @@ const { sliderRoot } = useHeroSlider()
   --delay: 0s;
 
   backdrop-filter: blur(40px);
-  background: linear-gradient(
-    165.08deg,
-    rgba(73, 116, 201, 0.64) -10.2%,
-    rgba(98, 71, 202, 0.64) 49.62%,
-    rgba(108, 35, 182, 0.64) 113.6%);
+  background: linear-gradient(165.08deg,
+      rgba(73, 116, 201, 0.64) -10.2%,
+      rgba(98, 71, 202, 0.64) 49.62%,
+      rgba(108, 35, 182, 0.64) 113.6%);
   border: 1px solid rgba(205, 106, 232, 0.8);
   border-bottom: none;
   border-left: none;
@@ -1063,11 +1054,10 @@ const { sliderRoot } = useHeroSlider()
   --delay: 0s;
 
   align-items: center;
-  background: linear-gradient(
-    165.08deg,
-    rgba(73, 116, 201, 0.64) -10.2%,
-    rgba(98, 71, 202, 0.64) 49.62%,
-    rgba(108, 35, 182, 0.64) 113.6%);
+  background: linear-gradient(165.08deg,
+      rgba(73, 116, 201, 0.64) -10.2%,
+      rgba(98, 71, 202, 0.64) 49.62%,
+      rgba(108, 35, 182, 0.64) 113.6%);
   border-radius: calc(var(--borderRadius) * 1.75);
   box-shadow: var(--shadowSize) calc(var(--shadowSize) * -1) 0 0 rgba(43, 15, 145, 0.64);
   display: flex;

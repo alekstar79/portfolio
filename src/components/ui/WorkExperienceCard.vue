@@ -8,7 +8,7 @@
       </a>
       <template v-else>{{ maybeTranslate(item.titleKey ?? item.title) }}</template>
     </h3>
-    <div class="work-experience-card__position">{{ t(item.positionKey) }}</div>
+    <div class="work-experience-card__position">{{ maybeTranslate(item.positionKey ?? item.position) }}</div>
     <div v-if="item.descriptionKey" class="work-experience-card__description" v-html="t(item.descriptionKey)"></div>
     <StackBadges v-if="item.stack.length > 0" :items="item.stack" />
   </article>

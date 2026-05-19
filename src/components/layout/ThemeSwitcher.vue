@@ -95,7 +95,10 @@ const { t } = useI18n()
   color: var(--color);
 }
 
-.theme-switcher__icon-wrapper--dark-theme :deep(.i-icon),
+.theme-switcher__icon-wrapper--dark-theme :deep(.i-icon) {
+  --color: var(--c-dark);
+}
+
 .theme-switcher__icon-wrapper--light-theme :deep(.i-icon) {
   --color: var(--c-white);
 }
