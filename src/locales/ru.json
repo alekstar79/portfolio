@@ -40,21 +40,21 @@
   },
   "content": {
     "hardSkills": [
-      "HTML (HTML5), EJS, JSX",
-      "CSS (CSS3), SASS (SCSS), PostCSS, Bootstrap, Tailwind, Анимации",
+      "HTML (HTML5), JSX",
+      "CSS (CSS3), SASS (SCSS), Bootstrap, Анимации",
       "JavaScript (ES6+, OOP), jQuery, TypeScript",
       "React",
       "Redux (Redux Toolkit, Redux Persist), MobX, Zustand",
       "Formik, React Hook Form, Yup, Axios, React Router, React Query",
       "Webpack, Vite, Gulp, Rollup",
-      "Jest, React Testing Library, Enzyme, Chai, Mocha, Vitest",
-      "REST API, WebSockets, Long Polling",
+      "Jest, React Testing Library, Chai, Mocha, Vitest",
+      "REST API, WebSockets, SSE",
       "BEM, Feature-Sliced Design, Доступность, UX",
-      "Git (GitHub, BitBucket, GitLab)",
-      "Figma, Adobe Photoshop, Avocode",
+      "Git (GitHub, GitLab)",
+      "Figma, Adobe Photoshop",
       "CMS 1C-Bitrix, Drupal, OpenCart, MODX",
-      "Базовые знания PHP, Blade, Twig",
-      "Agile, Waterfall, SCRUM",
+      "PHP, Twig",
+      "Agile, SCRUM",
       "Грамотная устная и письменная речь",
       "Уровень английского - B1"
     ],
@@ -91,28 +91,81 @@
     ],
     "workExperience": [
       {
-        "timeLabel": "Сентябрь 2022 - По настоящее время",
-        "title": "VK Team",
-        "position": "Frontend Engineer",
-        "description": "<p>Разработка и поддержка фронтенда внутренних инструментов компании, автоматизация процессов разработки.</p>"
+        "timeLabel": "Июнь 2023 - По настоящее время",
+        "title": "ГК Ramax (Интегро Текнолоджиз)",
+        "position": "Frontend Developer (Middle++)",
+        "description": "<p>Масштабная миграция Vue 2 → Vue 3 + TypeScript с полной архитектурной переработкой высоконагруженных систем. Разработка в условиях работы с 10k+ строками данных через WebSocket, оптимизация рендеринга (AG-Grid), снижение LCP на 50% благодаря code-splitting и tree-shaking. Построение микросервисной архитектуры для независимого развертывания модулей управления аэропортом и финтех-дашборда.</p>",
+        "stack": [
+          "Vue 3",
+          "TypeScript",
+          "Vite",
+          "Pinia",
+          "TanStack Query",
+          "AG-Grid",
+          "WebSocket",
+          "SCSS",
+          "StoryBook"
+        ]
       },
       {
-        "timeLabel": "Июнь 2021 - Сентябрь 2022",
-        "title": "Digital Element",
-        "position": "Frontend Developer",
-        "description": "<p>Разработка фронтенда в области e-commerce и fintech. Разработка на чистом JavaScript в ООП-стиле. Создание простых React компонентов. Написание автотестов для интерфейсных компонентов.</p>"
+        "timeLabel": "Ноябрь 2022 - Май 2023",
+        "title": "Волга-Днепр",
+        "position": "Lead Frontend Developer (контрактный проект)",
+        "description": "<p>Lead-проект: разработана система визуализации авиаперелетов с кастомным Canvas rendering engine (Fabric.js). Решена вычислительная проблема collision detection для диспетчерских операций. Ускорение рендеринга на 40%. Участие в архитектурном проектировании и технологическом выборе стека для критичного по производительности приложения реального времени.</p>",
+        "stack": [
+          "Vue 3",
+          "Canvas/Fabric.js",
+          "Pinia",
+          "WebSocket",
+          "TypeScript",
+          "GitLab"
+        ]
       },
       {
-        "timeLabel": "Сентябрь 2020 - Май 2021",
-        "title": "Ribbla",
-        "position": "Frontend Developer",
-        "description": "<p>Разработка фронтенда лендингов и e-commerce проектов.</p>"
+        "timeLabel": "Август 2020 - Октябрь 2022",
+        "title": "ООО Открытая Школа",
+        "position": "FullStack Developer (Middle+)",
+        "description": "<p>Комплексная переработка образовательной платформы: редизайн архитектуры кодовой базы, UX-улучшения, стабилизация через рефакторинг legacy-code (снижение downtime на 80%). Разработан навигационный краулер для динамической генерации меню. Локализация под российский сегмент, полная интеграция backend (Node.js, Express, MongoDB).</p>",
+        "stack": [
+          "Vue 2",
+          "Vuex",
+          "Node.js",
+          "Express",
+          "MongoDB",
+          "Redis",
+          "Docker",
+          "JWT"
+        ]
       },
       {
-        "timeLabel": "Июль 2019 - Август 2020",
-        "title": "Фриланс",
+        "timeLabel": "Май 2018 - Август 2020",
+        "title": "Digital Forge",
         "position": "Web Developer",
-        "description": "<p>Разработка сайтов. Исправление багов верстки. Написание простых скриптов.</p>"
+        "description": "<p>Полный цикл разработки 50+ коммерческих проектов: лендинги, корпоративные порталы, промо-сайты, интернет-магазины. Создание компонентной архитектуры на Web Components и Vue 2 для ускорения time-to-market. Внедрение best practices: lazy loading, service workers, оптимизация Lighthouse до 90+. Интеграции: REST API, платежные шлюзы (Stripe, CloudPayments), аналитика (GTM, Яндекс.Метрика). 100% кроссбраузерность IE11+.</p>",
+        "stack": [
+          "Vue 2",
+          "Nuxt.js",
+          "Web Components",
+          "SCSS/BEM",
+          "Webpack",
+          "PWA",
+          "REST API"
+        ]
+      },
+      {
+        "timeLabel": "Май 2014 - Май 2018",
+        "title": "Частная практика & Аутсорсинг",
+        "position": "Fullstack Web Developer",
+        "description": "<p>Разработка diverse fullstack-решений: SPA, SSR, PWA-приложений с использованием Canvas для графики и WebSocket для real-time данных. Работа с разными стеками (Vue, Node.js, PHP, MongoDB, PostgreSQL). Опыт работы в команде и самостоятельно. Построение собственных проектов с фокусом на производительность и масштабируемость.</p>",
+        "stack": [
+          "Vue/Nuxt.js",
+          "Node.js",
+          "Canvas",
+          "WebSocket",
+          "MongoDB/PostgreSQL",
+          "Docker",
+          "REST API"
+        ]
       }
     ],
     "social": {

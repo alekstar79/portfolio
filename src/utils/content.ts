@@ -72,35 +72,40 @@ export const portfolioItems: PortfolioItem[] = [
 
 export const workExperienceItems: WorkExperienceItem[] = [
   {
-    time: { datetime: '2022-09', label: 'content.workExperience.0.timeLabel' },
+    time: { datetime: '2023-06', label: 'content.workExperience.0.timeLabel' },
     titleKey: 'content.workExperience.0.title',
-    href: 'https://team.vk.company/',
     positionKey: 'content.workExperience.0.position',
     descriptionKey: 'content.workExperience.0.description',
-    stack: ['JavaScript', 'TypeScript', 'React', 'Redux', 'WebPack'],
+    stack: ['Vue 3', 'TypeScript', 'Vite', 'Pinia', 'TanStack Query', 'AG-Grid', 'WebSocket', 'SCSS', 'StoryBook'],
   },
   {
-    time: { datetime: '2021-06/2022-09', label: 'content.workExperience.1.timeLabel' },
+    time: { datetime: '2022-11/2023-05', label: 'content.workExperience.1.timeLabel' },
     titleKey: 'content.workExperience.1.title',
-    href: 'https://d-element.ru/',
     positionKey: 'content.workExperience.1.position',
     descriptionKey: 'content.workExperience.1.description',
-    stack: ['EJS', 'PostCSS', 'JavaScript', 'React', 'Redux', 'TypeScript', 'WebPack', 'Jest', 'Figma', 'Bitrix'],
+    stack: ['Vue 3', 'Canvas/Fabric.js', 'Pinia', 'WebSocket', 'TypeScript', 'GitLab'],
   },
   {
-    time: { datetime: '2020-09/2021-05', label: 'content.workExperience.2.timeLabel' },
+    time: { datetime: '2020-08/2022-10', label: 'content.workExperience.2.timeLabel' },
     titleKey: 'content.workExperience.2.title',
-    href: 'https://ribbla.com/',
+    href: 'https://2035school.ru',
     positionKey: 'content.workExperience.2.position',
     descriptionKey: 'content.workExperience.2.description',
-    stack: ['HTML', 'CSS', 'SCSS', 'JavaScript', 'jQuery', 'Gulp', 'Figma', 'Drupal'],
+    stack: ['Vue 2', 'Vuex', 'Node.js', 'Express', 'MongoDB', 'Redis', 'Docker', 'JWT'],
   },
   {
-    time: { datetime: '2019-07/2020-08', label: 'content.workExperience.3.timeLabel' },
+    time: { datetime: '2018-05/2020-08', label: 'content.workExperience.3.timeLabel' },
     titleKey: 'content.workExperience.3.title',
     positionKey: 'content.workExperience.3.position',
     descriptionKey: 'content.workExperience.3.description',
-    stack: ['HTML', 'CSS', 'JavaScript', 'jQuery', 'PHP', 'Gulp', 'Adobe Photoshop'],
+    stack: ['Vue', 'Nuxtjs', 'Web Components', 'SCSS', 'Webpack', 'PWA', 'REST API'],
+  },
+  {
+    time: { datetime: '2014-05/2018-05', label: 'content.workExperience.4.timeLabel' },
+    titleKey: 'content.workExperience.4.title',
+    positionKey: 'content.workExperience.4.position',
+    descriptionKey: 'content.workExperience.4.description',
+    stack: ['Vue', 'Nuxtjs', 'Node.js', 'Canvas', 'WebSocket', 'MongoDB', 'PostgreSQL', 'Docker', 'REST API'],
   },
 ]
 
