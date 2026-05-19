@@ -1130,12 +1130,12 @@ const { sliderRoot } = useHeroSlider()
   }
 
   .i-icon {
-    --icon-color: hsla(0, 0%, 100%, 0.64);
+    color: hsla(0, 0%, 100%, 0.64);
   }
 
   @media (hover: hover) {
     &:hover .i-icon {
-      --icon-color: var(--c-accent);
+      color: var(--c-accent);
     }
   }
 }
@@ -1164,7 +1164,7 @@ const { sliderRoot } = useHeroSlider()
   }
 
   .i-icon {
-    --icon-color: #fff9d8;
+    color: #fff9d8;
     --size: 60%;
   }
 
@@ -1173,7 +1173,7 @@ const { sliderRoot } = useHeroSlider()
       background-color: var(--c-accent);
 
       .i-icon {
-        --icon-color: var(--c-accent);
+        color: var(--c-accent);
       }
     }
   }

@@ -23,21 +23,20 @@ function makeGraphicMonochrome(node: SVGElement): void {
 }
 
 function convertFillToCurrentColor(node: SVGElement): void {
-  // Replace inline fill/stroke colors with CSS variable for better control
+  // Replace inline fill/stroke colors with currentColor for CSS control
   const fillValue = node.getAttribute('fill')
   const strokeValue = node.getAttribute('stroke')
 
   node.removeAttribute('style')
 
-  // Use CSS variable that can be controlled from parent via CSS
   if (fillValue && fillValue !== 'none') {
-    node.setAttribute('fill', 'var(--icon-color)')
+    node.setAttribute('fill', 'currentColor')
   } else if (!fillValue && !['line', 'polyline'].includes(node.tagName)) {
-    node.setAttribute('fill', 'var(--icon-color)')
+    node.setAttribute('fill', 'currentColor')
   }
 
   if (strokeValue && strokeValue !== 'none') {
-    node.setAttribute('stroke', 'var(--icon-color)')
+    node.setAttribute('stroke', 'currentColor')
   }
 }
 

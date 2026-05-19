@@ -1,5 +1,5 @@
 <template>
-  <svg class="i-icon" :style="color ? { '--icon-color': color } : {}">
+  <svg class="i-icon" :style="color ? { color } : {}">
     <use :href="href"></use>
   </svg>
 </template>
@@ -29,7 +29,7 @@ const href = computed(() => {
 
 <style scoped>
 .i-icon {
-  --icon-color: currentColor;
+  color: inherit;
   --size: 1em;
   display: inline-flex;
   align-items: center;
