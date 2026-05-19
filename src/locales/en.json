@@ -26,16 +26,16 @@
     "greeting": "Hello!",
     "name": "My name is Aleksey Tarasenko.",
     "profession": "I am a frontend developer.",
-    "offerPrefix": "I can do some great",
-    "offerSuffix": "things for you.",
+    "offerPrefix": "I turn ideas into",
+    "offerSuffix": "practical solutions.",
     "button": {
       "label": "Go to contacts",
       "text": "Let's check!"
     }
   },
   "footer": {
-    "title": "Do you want to ask\nsomething interesting?",
-    "description": "Contact me. I am in touch mon-fri from 8 am to 8 pm (gmt).",
+    "title": "Turn your idea into code?",
+    "description": "Write to me. Ready to discuss an idea or just talk about technology.",
     "copyright": "© Aleksey Tarasenko 2026"
   },
   "content": {

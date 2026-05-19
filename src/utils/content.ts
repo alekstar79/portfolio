@@ -81,7 +81,7 @@ export const workExperienceItems: WorkExperienceItem[] = [
     titleKey: 'content.workExperience.1.title',
     positionKey: 'content.workExperience.1.position',
     descriptionKey: 'content.workExperience.1.description',
-    stack: ['TypeScript', 'Node.js', 'Vue', 'Vuetify', 'Pinia', 'Fabricjs', 'WebSocket', 'GitLab'],
+    stack: ['TypeScript', 'Node.js', 'Vue', 'Vuetify', 'Pinia', 'Redis', 'Fabricjs', 'WebSocket', 'GitLab'],
   },
   {
     time: { datetime: '2020-08/2022-10', label: 'content.workExperience.2.timeLabel' },
@@ -89,7 +89,7 @@ export const workExperienceItems: WorkExperienceItem[] = [
     href: 'https://2035school.ru',
     positionKey: 'content.workExperience.2.position',
     descriptionKey: 'content.workExperience.2.description',
-    stack: ['JS', 'Node.js', 'Express', 'Vue', 'Vuex', 'MongoDB', 'Redis', 'Docker', 'Webpack', 'JWT'],
+    stack: ['JS', 'Node.js', 'Express', 'Vue', 'Vuex', 'Vue Router', 'MongoDB', 'Docker', 'Webpack', 'JWT'],
   },
   {
     time: { datetime: '2018-05/2020-08', label: 'content.workExperience.3.timeLabel' },
