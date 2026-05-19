@@ -89,6 +89,10 @@ export function useLiveTyping(rootRef: Ref<HTMLElement | null>) {
           ? stage.charsNodes.length
           : Math.min(previousState.visibleChars, stage.charsNodes.length)
 
+        if (visibleCount > 0) {
+          stage.stageNode.classList.add(IS_VISIBLE_CLASS)
+        }
+
         stage.charsNodes.slice(0, visibleCount).forEach((node) => {
           node.classList.add(IS_VISIBLE_CLASS)
         })
@@ -96,6 +100,59 @@ export function useLiveTyping(rootRef: Ref<HTMLElement | null>) {
     }
 
     stagesInfo = nextStagesInfo
+  }
+
+  const continueTyping = (previousStageStates: LiveTypingStageState[] = []): void => {
+    const root = rootRef.value
+    if (!root || currentStageIndex >= stagesInfo.length) {
+      return
+    }
+
+    const currentStage = stagesInfo[currentStageIndex]
+    const previousState = previousStageStates[currentStageIndex]
+    const visibleCount = previousState
+      ? previousState.isFullyVisible
+        ? currentStage.charsNodes.length
+        : Math.min(previousState.visibleChars, currentStage.charsNodes.length)
+      : 0
+
+    if (currentStage.charsNodes.length === 0) {
+      startTyping()
+      return
+    }
+
+    currentStage.stageNode.classList.add(IS_VISIBLE_CLASS)
+
+    if (visibleCount === currentStage.charsNodes.length) {
+      schedule(() => {
+        if (currentStage.isHideAfterTyping) {
+          removeChars(currentStage)
+          return
+        }
+
+        currentStageIndex += 1
+        startTyping()
+      }, cfg.delayBetweenStages)
+      return
+    }
+
+    currentStage.charsNodes.slice(visibleCount).forEach((charNode, index) => {
+      schedule(() => {
+        charNode.classList.add(IS_VISIBLE_CLASS)
+
+        if (visibleCount + index + 1 === currentStage.charsNodes.length) {
+          schedule(() => {
+            if (currentStage.isHideAfterTyping) {
+              removeChars(currentStage)
+              return
+            }
+
+            currentStageIndex += 1
+            startTyping()
+          }, cfg.delayBetweenStages)
+        }
+      }, index * cfg.delayBetweenCharsTyping)
+    })
   }
 
   const startTyping = (): void => {
@@ -259,7 +316,11 @@ export function useLiveTyping(rootRef: Ref<HTMLElement | null>) {
   }
 
   const refreshTyping = (): void => {
-    updateStageInfo(measureStageState())
+    const previousStageStates = measureStageState()
+    clearTimers()
+    cleanupVisibleClasses()
+    updateStageInfo(previousStageStates)
+    continueTyping(previousStageStates)
   }
 
   onMounted(() => {
