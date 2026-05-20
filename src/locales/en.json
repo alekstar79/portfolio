@@ -72,9 +72,9 @@
     ],
     "portfolio": [
       {
-        "title": "Vue 3 Calendar Component",
-        "description": "A modern, responsive, and customizable calendar component built with Vue 3 (Composition API) and TypeScript.",
-        "timeLabel": "August 2025"
+        "title": "Linux replica",
+        "description": "A web-based Linux desktop environment replica, styled after Ubuntu, featuring over 50 applications, all built using TypeScript and React.",
+        "timeLabel": "December 2025"
       },
       {
         "title": "Navbar",
