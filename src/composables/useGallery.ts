@@ -10,14 +10,14 @@ export function useGallery() {
           src,
           type: 'image',
           caption,
-        },
+        }
       ],
       {
         infinite: false,
         Toolbar: { display: ['close'] },
         Thumbs: { show: false },
         Navigation: { show: false },
-        Carousel: { infinite: false },
+        Carousel: { infinite: false }
       } as any
     )
   }

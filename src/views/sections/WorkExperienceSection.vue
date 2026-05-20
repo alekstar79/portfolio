@@ -2,14 +2,22 @@
   <section id="work-experience" class="section scroll-effect" data-js-scroll-effect>
     <div class="section__inner container">
       <header class="section__header">
-        <h2 class="section__title">{{ t('sections.workExperience.title').split(' ')[0] }} <span class="accent-color">{{
-          t('sections.workExperience.title').split(' ').slice(1).join(' ') }}</span></h2>
+        <h2 class="section__title">
+          {{ t('sections.workExperience.title').split(' ')[0] }}
+          <span class="accent-color">
+            {{ t('sections.workExperience.title').split(' ').slice(1).join(' ') }}
+          </span>
+        </h2>
       </header>
       <div class="section__body">
         <div class="work-experience">
           <ul class="work-experience__list grid">
-            <li v-for="(item, index) in workExperienceItems" :key="`${item.titleKey ?? item.title ?? index}-${index}`"
-              class="work-experience__item grid__item" :style="{ '--reveal-delay': `${(index + 1) * 0.2}s` }">
+            <li
+              v-for="(item, index) in workExperienceItems"
+              :key="`${item.titleKey ?? item.title ?? index}-${index}`"
+              class="work-experience__item grid__item"
+              :style="{ '--reveal-delay': `${(index + 1) * 0.2}s` }"
+            >
               <WorkExperienceCard :item="item" />
             </li>
           </ul>

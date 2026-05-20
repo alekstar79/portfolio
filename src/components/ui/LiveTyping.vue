@@ -1,26 +1,42 @@
 <template>
   <h1 ref="rootRef" class="hero__title live-typing" data-js-live-typing>
     <div class="visually-hidden">
-      {{ t('hero.greeting') }} {{ t('hero.name') }} {{ t('hero.profession') }} {{ t('hero.offerPrefix') }} {{
-        t('hero.offerSuffix') }}
+      {{ t('hero.greeting') }} {{ t('hero.name') }} {{ t('hero.profession') }} {{ t('hero.offerPrefix') }} {{ t('hero.offerSuffix') }}
     </div>
-    <div v-for="(stage, stageIndex) in stageLines" :key="`stage-${stageIndex}`" class="live-typing__stage"
+
+    <div
+      v-for="(stage, stageIndex) in stageLines"
+      :key="`stage-${stageIndex}`"
+      class="live-typing__stage"
       aria-hidden="true"
-      :data-js-live-typing-stage="JSON.stringify({ isHideAfterTyping: Boolean(stage.isHideAfterTyping) })">
-      <template v-for="(line, lineIndex) in stage.lines" :key="`line-${stageIndex}-${lineIndex}`">
+      :data-js-live-typing-stage="JSON.stringify({ isHideAfterTyping: Boolean(stage.isHideAfterTyping) })"
+    >
+      <template
+        v-for="(line, lineIndex) in stage.lines"
+        :key="`line-${stageIndex}-${lineIndex}`"
+      >
         <div class="live-typing__line">
-          <template v-for="(token, tokenIndex) in line.tokens" :key="`token-${stageIndex}-${lineIndex}-${tokenIndex}`">
+          <template
+            v-for="(token, tokenIndex) in line.tokens"
+            :key="`token-${stageIndex}-${lineIndex}-${tokenIndex}`"
+          >
             <span v-if="token.type === 'accent'" class="accent-color">
-              <span v-for="(char, charIndex) in token.value.split('')"
-                :key="`char-${stageIndex}-${lineIndex}-${tokenIndex}-${charIndex}`" class="live-typing__char"
-                data-js-live-typing-char>
+              <span
+                class="live-typing__char"
+                v-for="(char, charIndex) in token.value.split('')"
+                :key="`char-${stageIndex}-${lineIndex}-${tokenIndex}-${charIndex}`"
+                data-js-live-typing-char
+              >
                 {{ char }}
               </span>
             </span>
             <template v-else>
-              <span v-for="(char, charIndex) in token.value.split('')"
-                :key="`char-${stageIndex}-${lineIndex}-${tokenIndex}-${charIndex}`" class="live-typing__char"
-                data-js-live-typing-char>
+              <span
+                class="live-typing__char"
+                v-for="(char, charIndex) in token.value.split('')"
+                :key="`char-${stageIndex}-${lineIndex}-${tokenIndex}-${charIndex}`"
+                data-js-live-typing-char
+              >
                 {{ char }}
               </span>
             </template>
@@ -40,11 +56,6 @@ interface LiveTypingPart {
   type: 'accent' | 'text'
   value: string
 }
-
-// interface LiveTypingStage {
-//   isHideAfterTyping?: boolean
-//   parts: LiveTypingPart[]
-// }
 
 const rootRef = ref<HTMLElement | null>(null)
 const { t, currentLocale } = useI18n()
@@ -241,7 +252,6 @@ onUnmounted(() => {
 }
 
 @media (prefers-reduced-motion: reduce) {
-
   .live-typing__stage:not(.is-visible),
   .live-typing__char:not(.is-visible) {
     display: initial;

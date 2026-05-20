@@ -1,8 +1,18 @@
 <template>
-  <label class="theme-switcher header__theme-switcher" data-js-theme-switcher :title="themeLabel">
+  <label
+    data-js-theme-switcher
+    class="theme-switcher header__theme-switcher"
+    :title="themeLabel"
+  >
     <span class="visually-hidden">{{ t('theme.switch') }}</span>
-    <input v-model="isLightThemeEnabled" class="theme-switcher__checkbox visually-hidden" type="checkbox"
-      data-js-theme-switcher-checkbox />
+
+    <input
+      data-js-theme-switcher-checkbox
+      v-model="isLightThemeEnabled"
+      class="theme-switcher__checkbox visually-hidden"
+      type="checkbox"
+    />
+
     <span class="theme-switcher__body" title="Switch theme">
       <span class="theme-switcher__icon-wrapper theme-switcher__icon-wrapper--dark-theme">
         <AppIcon name="moon" />

@@ -59,7 +59,6 @@ function enrichSpriteWithVariants(spriteRoot: ParentNode): void {
 
   const symbols = Array.from(defsNode.querySelectorAll<SVGSymbolElement>('symbol'))
   symbols.forEach((symbolNode) => {
-    // Convert original icons to use currentColor for CSS control
     symbolNode.querySelectorAll<SVGElement>(SVG_GRAPHIC_SELECTOR).forEach((node) => {
       convertFillToCurrentColor(node)
     })

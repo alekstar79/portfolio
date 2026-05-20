@@ -72,9 +72,14 @@
     ],
     "portfolio": [
       {
-        "title": "Fancy Auth Form",
-        "description": "Minimalistic form of authorization based on SPA with integration of several technologies: Vite, TypeScript, React, React Router, Redux, Redux Toolkit, Redux Persist, Formik, Yup, classNames, PostCSS, Vite SVG icon, Vitest etc.",
-        "timeLabel": "August 2022"
+        "title": "Vue 3 Calendar Component",
+        "description": "A modern, responsive, and customizable calendar component built with Vue 3 (Composition API) and TypeScript.",
+        "timeLabel": "August 2025"
+      },
+      {
+        "title": "Navbar",
+        "description": "Expressive round navbar",
+        "timeLabel": "March 2023"
       },
       {
         "title": "Educational online platform Open School",
@@ -83,7 +88,7 @@
       },
       {
         "title": "Landing page of an elite apartment renovation company",
-        "description": "Many complex components were implemented in the project.",
+        "description": "The landing page for a luxury renovation studio is fully implemented in JavaScript: the entire DOM structure, styles, and interactive elements are generated dynamically without static HTML/CSS files. The architecture is built on a modular approach with control over re-renders, rendering optimization, and lazy media loading.",
         "timeLabel": "December 2019"
       }
     ],

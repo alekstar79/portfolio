@@ -2,8 +2,13 @@
   <div :class="rootClasses">
     <ul class="social-links__list">
       <li v-for="item in items" :key="item.href" class="social-links__item">
-        <a class="social-links__link" :href="item.href" :title="t(item.label)" target="_blank"
-          :aria-label="t(item.label)">
+        <a
+          class="social-links__link"
+          :href="item.href"
+          :title="t(item.label)"
+          target="_blank"
+          :aria-label="t(item.label)"
+        >
           <AppIcon :name="item.icon" variant="mono" />
         </a>
       </li>
@@ -31,6 +36,7 @@ const rootClasses = computed(() => {
 
   return ['social-links', ...extraClasses]
 })
+
 const { t } = useI18n()
 </script>
 
@@ -98,7 +104,6 @@ const { t } = useI18n()
   &[title="Max"] :deep(.i-icon) {
     --size: 50%;
   }
-
 }
 
 .is-light-theme-enabled .social-links__link :deep(.i-icon) {
