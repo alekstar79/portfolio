@@ -1,4 +1,5 @@
 import { onMounted } from 'vue'
+import { assetUrl } from '@/utils/paths'
 
 const SVG_GRAPHIC_SELECTOR = 'path, circle, rect, polygon, ellipse, line, polyline'
 const MONO_SUFFIX = '-mono'
@@ -23,7 +24,6 @@ function makeGraphicMonochrome(node: SVGElement): void {
 }
 
 function convertFillToCurrentColor(node: SVGElement): void {
-  // Replace inline fill/stroke colors with currentColor for CSS control
   const fillValue = node.getAttribute('fill')
   const strokeValue = node.getAttribute('stroke')
 
@@ -76,7 +76,7 @@ export function useSvgSprite() {
       return
     }
 
-    const response = await fetch('/icons.svg')
+    const response = await fetch(assetUrl('icons.svg'))
     if (!response.ok) {
       return
     }

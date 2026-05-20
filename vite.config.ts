@@ -3,10 +3,20 @@ import vue from '@vitejs/plugin-vue'
 import { fileURLToPath, URL } from 'node:url'
 
 export default defineConfig({
+  base: '/portfolio/',
   plugins: [vue()],
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
     },
   },
+  experimental: {
+    renderBuiltUrl(filename, { hostType }) {
+      if (hostType === 'css' && filename.startsWith('/images/')) {
+        return { relative: true }
+      }
+
+      return { relative: false }
+    }
+  }
 })

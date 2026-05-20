@@ -7,11 +7,13 @@
 </template>
 
 <script setup lang="ts">
-const props = defineProps<{ items: string[] }>()
+import { assetUrl } from '@/utils/paths'
 
-const getIconPath = (item: string): string => `/images/icons/${item.replaceAll(' ', '-').toLowerCase().trim()}.svg`
+defineProps<{ items: string[] }>()
 
-void props
+const getIconPath = (item: string): string => {
+  return assetUrl(`images/icons/${item.replaceAll(' ', '-').toLowerCase().trim()}.svg`)
+}
 </script>
 
 <style scoped>

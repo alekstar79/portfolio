@@ -6,20 +6,19 @@
       href="#"
       title="Открыть изображение"
       @click.prevent="$emit('openImage', {
-        src: `/images/projects/${item.imgName}_full.jpg`,
+        src: assetUrl(`images/projects/${item.imgName}_full.jpg`),
         caption: maybeTranslate(item.titleKey ?? item.title),
       })"
     >
       <img
         class="portfolio-card__image"
-        :src="`/images/projects/${item.imgName}.jpg`"
+        :src="assetUrl(`images/projects/${item.imgName}.jpg`)"
         alt=""
         width="400"
         height="320"
         loading="lazy"
       />
     </a>
-
     <div class="portfolio-card__body">
       <time class="portfolio-card__date" :datetime="item.time.datetime">
         {{ maybeTranslate(item.time.label) }}
@@ -34,11 +33,10 @@
           rel="noreferrer"
           title="Open the website in a new tab"
         >
-          {{ maybeTranslate(item.titleKey ?? item.title) }}
+          <span class="portfolio-card__link-text">{{ maybeTranslate(item.titleKey ?? item.title) }}</span>
+          <span class="portfolio-card__link-icon" aria-hidden="true"></span>
         </a>
-        <template v-else>
-          {{ maybeTranslate(item.titleKey ?? item.title) }}
-        </template>
+        <template v-else>{{ maybeTranslate(item.titleKey ?? item.title) }}</template>
       </h3>
 
       <div
@@ -55,6 +53,7 @@
 import type { PortfolioItem } from '@/types/content'
 import StackBadges from './StackBadges.vue'
 import { useI18n } from '@/composables/useI18n'
+import { assetUrl } from '@/utils/paths'
 
 defineProps<{ item: PortfolioItem }>()
 defineEmits<{
