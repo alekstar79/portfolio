@@ -1,23 +1,51 @@
 <template>
   <article class="portfolio-card card card--hoverable" data-js-gallery-container>
-    <a class="portfolio-card__image-wrapper"
+    <a
+      class="portfolio-card__image-wrapper"
       :class="{ 'portfolio-card__image-wrapper--border': item.hasImageWrapperBorder }"
-      :href="`/images/projects/${item.imgName}_full.jpg`" title="Open the image in full size"
-      @click.prevent="$emit('openGallery')">
-      <img class="portfolio-card__image" :src="`/images/projects/${item.imgName}.jpg`" alt="" width="400" height="320"
-        loading="lazy" />
+      href="#"
+      title="Открыть изображение"
+      @click.prevent="$emit('openImage', {
+        src: `/images/projects/${item.imgName}_full.jpg`,
+        caption: maybeTranslate(item.titleKey ?? item.title),
+      })"
+    >
+      <img
+        class="portfolio-card__image"
+        :src="`/images/projects/${item.imgName}.jpg`"
+        alt=""
+        width="400"
+        height="320"
+        loading="lazy"
+      />
     </a>
+
     <div class="portfolio-card__body">
-      <time class="portfolio-card__date" :datetime="item.time.datetime">{{ maybeTranslate(item.time.label) }}</time>
+      <time class="portfolio-card__date" :datetime="item.time.datetime">
+        {{ maybeTranslate(item.time.label) }}
+      </time>
+
       <h3 class="portfolio-card__title">
-        <a v-if="item.href" class="portfolio-card__link" :href="item.href" target="_blank" rel="noreferrer"
-          title="Open the website in a new tab">
+        <a
+          v-if="item.href"
+          class="portfolio-card__link"
+          :href="item.href"
+          target="_blank"
+          rel="noreferrer"
+          title="Open the website in a new tab"
+        >
           {{ maybeTranslate(item.titleKey ?? item.title) }}
         </a>
-        <template v-else>{{ maybeTranslate(item.titleKey ?? item.title) }}</template>
+        <template v-else>
+          {{ maybeTranslate(item.titleKey ?? item.title) }}
+        </template>
       </h3>
-      <div v-if="item.descriptionKey || item.description" class="portfolio-card__description"
-        v-html="maybeTranslate(item.descriptionKey ?? item.description)"></div>
+
+      <div
+        v-if="item.descriptionKey || item.description"
+        class="portfolio-card__description"
+        v-html="maybeTranslate(item.descriptionKey ?? item.description)"
+      />
       <StackBadges v-if="item.stack.length > 0" :items="item.stack" />
     </div>
   </article>
@@ -29,7 +57,9 @@ import StackBadges from './StackBadges.vue'
 import { useI18n } from '@/composables/useI18n'
 
 defineProps<{ item: PortfolioItem }>()
-defineEmits<{ openGallery: [] }>()
+defineEmits<{
+  openImage: [{ src: string; caption: string }]
+}>()
 
 const { t } = useI18n()
 

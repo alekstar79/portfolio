@@ -1,19 +1,26 @@
 import { Fancybox } from '@fancyapps/ui'
 import '@fancyapps/ui/dist/fancybox/fancybox.css'
-import type { PortfolioItem } from '@/types/content'
 
 export function useGallery() {
-  const openPortfolioItem = (items: PortfolioItem[], index: number): void => {
-    const galleryItems = items.map((item) => ({
-      src: `/images/projects/${item.imgName}_full.jpg`,
-      type: 'image' as const,
-      caption: item.title,
-    }))
+  const openSingleImage = (src: string, caption: string): void => {
     Fancybox.close(true)
-    Fancybox.show(galleryItems, {
-      startIndex: index,
-    })
+    Fancybox.show(
+      [
+        {
+          src,
+          type: 'image',
+          caption,
+        },
+      ],
+      {
+        infinite: false,
+        Toolbar: { display: ['close'] },
+        Thumbs: { show: false },
+        Navigation: { show: false },
+        Carousel: { infinite: false },
+      } as any
+    )
   }
 
-  return { openPortfolioItem }
+  return { openSingleImage }
 }
